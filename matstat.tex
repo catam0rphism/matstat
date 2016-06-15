@@ -1,33 +1,5 @@
-\documentclass{article}
-\usepackage[T2A]{fontenc}
-\usepackage[utf8x]{inputenc}
-\usepackage[english, russian]{babel} % Localisation
-
-% \usepackage{fontspec} % loaded by polyglossia, but included here for transparency 
-% \usepackage{polyglossia}
-% \setmainlanguage{russian} 
-% \setotherlanguage{english}
-
-\usepackage{amssymb} % More math symbols
-\usepackage{amsmath} % Math constructions
-\usepackage{amsthm} % Theorems
-\usepackage{subfiles} % File separation
-
-\newcommand{\sP}{\mathcal{P}}
-\newcommand{\sF}{\mathfrak{F}}
-\newcommand{\sX}{\mathfrak{X}}
-
-\newtheorem{lemma}{Лемма}
-\newtheorem{definition}{Определение}
-
+\documentclass[main.tex]{subfiles}
 \begin{document}
-
-\title{Этакое большое ничего и матстат}
-\author{Белкин Дмитрий, студент группы 4362
-\and Бертыш Вадим, студент группы 4373}
-\date{15 июня 2016}
-\maketitle
-\newpage
 
 % 6
 \begin{definition}[Статистический эксперимент]
@@ -36,7 +8,7 @@
 	$\sF$ - Савокупность наблюдаемых событий\newline
 	$\sP=\{P_\theta, \theta \in \Theta\}$ - Семейство вероятностных распределений
 \end{definition}
-Дальше положим $\sX=\mathbb{R}^n$, $\sF=\sigma(\sF_1 \times \dots \times \sF_n)$
+Дальше положим $\sX=\mathbb{R}^n$, $\sF=\sigma(\sF_1 \times \dots \times \sF_n)=\mathfrak{B}_n$
 
 % 8
 \begin{definition}[Статистика]
