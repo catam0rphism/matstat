@@ -1,7 +1,8 @@
-\documentclass{article}
+\documentclass[titlepage]{article}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8x]{inputenc}
 \usepackage[english, russian]{babel} % Localisation
+% \usepackage{pscyr} % fonts
 
 % \usepackage{fontspec} % loaded by polyglossia, but included here for transparency 
 % \usepackage{polyglossia}
@@ -12,6 +13,8 @@
 \usepackage{amsmath} % Math constructions
 \usepackage{amsthm} % Theorems
 \usepackage{subfiles} % File separation
+\usepackage{titlepic} % Logo =)
+\usepackage{graphicx}
 
 \newcommand{\sP}{\mathcal{P}}
 \newcommand{\sF}{\mathfrak{F}}
@@ -20,15 +23,15 @@
 \newtheorem{lemma}{Лемма}
 \newtheorem{definition}{Определение}
 
-\begin{document}
-
 \title{Этакое большое ничего и матстат}
+\titlepic{\includegraphics[width=4cm]{u1152logo.png}}
 \author{Белкин Дмитрий, U-1152
 \and Бертыш Вадим, СПБГЭТУ <<ЛЭТИ>> 4373}
 \date{15 июня 2016}
 
+\begin{document}
+
 \maketitle
-\newpage
 
 \subfile{matstat.tex}
 
