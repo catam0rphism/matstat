@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[english, russian]{babel} % Localisation
+
+% \usepackage{fontspec} % loaded by polyglossia, but included here for transparency 
+% \usepackage{polyglossia}
+% \setmainlanguage{russian} 
+% \setotherlanguage{english}
+
+\usepackage{amssymb} % More math symbols
+\usepackage{amsmath} % Math constructions
+\usepackage{amsthm} % Theorems
+\usepackage{subfiles} % File separation
+
+\newcommand{\sP}{\mathcal{P}}
+\newcommand{\sF}{\mathfrak{F}}
+\newcommand{\sX}{\mathfrak{X}}
+
+\newtheorem{lemma}{Лемма}
+\newtheorem{definition}{Определение}
+
+\begin{document}
+
+\title{Этакое большое ничего и матстат}
+\author{Белкин Дмитрий, студент группы 4362
+\and Бертыш Вадим, студент группы 4373}
+\date{15 июня 2016}
+\maketitle
+\newpage
+
+% 6
+\begin{definition}[Статистический эксперимент]
+	Тройка $(\sX,\sF,\sP)$ называется статистическим экспериментом\newline
+	$\sX$ - Множество результатов эксперимента\newline
+	$\sF$ - Савокупность наблюдаемых событий\newline
+	$\sP=\{P_\theta, \theta \in \Theta\}$ - Семейство вероятностных распределений
+\end{definition}
+Дальше положим $\sX=\mathbb{R}^n$, $\sF=\sigma(\sF_1 \times \dots \times \sF_n)$
+
+% 8
+\begin{definition}[Статистика]
+	Измеримая функция $T:\sX \rightarrow E$ называется статистикой
+\end{definition}
+
+\begin{definition}[Подчиненная статистика]
+	Статистика $T$ называется подчиненной, если её распределение не зависит от параметра
+	$$P_\theta (T\in A) = P_T(A)$$
+\end{definition}
+
+\begin{definition}[Достаточная статистика]
+	Статистика $T$ назвается достаточной, если условное распределение $X$ при условии $T$ не зависит от параметра
+	$$P_\theta(X\in A|T) = P_{X|T}(A),\forall \theta \in \Theta $$
+\end{definition}
+
+
+\end{document}
