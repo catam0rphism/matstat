@@ -7,7 +7,7 @@
 	Тройка $(\sX,\sF,\sP)$ называется статистическим экспериментом
 	\begin{itemize}
 		\item $\sX$ - Множество результатов эксперимента
-		\item $\sF$ - Савокупность наблюдаемых событий
+		\item $\sF$ - Совокупность наблюдаемых событий
 		\item $\sP=\{P_\theta, \theta \in \Theta\}$ - Семейство вероятностных распределений
 	\end{itemize}
 \end{definition}
@@ -35,10 +35,10 @@
 \end{definition}
 Использование МДС максимально редуцирует имеющиеся данные
 
-\paragraph{Основные типы задачь статистики}
+\paragraph{Основные типы задач статистики}
 \begin{itemize}
 	\item Точечное оценивание (статистики $\delta : \sX \rightarrow \Theta$)
-	\item Доверительное оценивание с уровнеи доверия $1-\alpha$ ($\mathcal{Y}$ - семейство подмножеств $\Theta$)
+	\item Доверительное оценивание с уровнем доверия $1-\alpha$ ($\mathcal{Y}$ - семейство подмножеств $\Theta$)
 		$$\Delta : \sX \rightarrow \mathcal{Y}$$
 	такие, что $P_\theta (\theta \in \Delta (\vec{X})) \geq 1-\alpha, \forall \theta \in \Theta$
 	\item Проверка гипотез (принятие решений) \\
@@ -48,7 +48,7 @@
 \end{itemize}
 
 \paragraph{Асимптотический подход}
-Пусть $(\sX^{(n)},\sF^{(n)},\sP^{(n)})$ последовательность статистичиеских экспериментов
+Пусть $(\sX^{(n)},\sF^{(n)},\sP^{(n)})$ последовательность статистических экспериментов
 $\sP^{(n)}=\{p_\theta^{(n)},\theta \in \Theta\}$
 
 \begin{definition}[Состоятельность оценки]
@@ -62,7 +62,7 @@ $\sP^{(n)}=\{p_\theta^{(n)},\theta \in \Theta\}$
 \end{definition}
 
 \begin{definition}[Асимптотическая нормальность]
-	Точечьная оценка $\delta^{(n)}(\vec{X})$ называется асимптотически нормальной, если
+	Точечная оценка $\delta^{(n)}(\vec{X})$ называется асимптотически нормальной, если
 	$$\sqrt{n} (\delta^{(n)}(\vec{X}) - \theta) \underset{P_\theta}{\Rightarrow} \mathcal{N}(0,\sigma^2(\theta))$$
 \end{definition}
 Индикатор $\mathbbm{1}$
