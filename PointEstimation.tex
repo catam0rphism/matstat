@@ -1,6 +1,5 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
-fafad
 
 \begin{definition}[Точечная оценка]
 	Статистика $\delta ( \vec{X} )$, $\delta : \sX \rightarrow \Theta$ наызвается точечной оценкой
@@ -13,5 +12,11 @@ fafad
 	 	\item $W(\theta,\theta)=0$
 	 \end{itemize} 
 \end{definition}
+Используют различные функции потерь (в дальнейшем используем функцию Гаусса)
+\begin{align}
+	& W(\delta,\theta)=|\delta-\theta| \tag{Лаплас} \\
+	& W(\delta,\theta)=(\delta-\theta)^2 \tag{Гаусс}
+\end{align}
+
 
 \end{document}

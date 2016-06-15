@@ -2,6 +2,7 @@
 \begin{document}
 
 % 6
+\paragraph{Основные определения}
 \begin{definition}[Статистический эксперимент]
 	Тройка $(\sX,\sF,\sP)$ называется статистическим экспериментом
 	\begin{itemize}
@@ -33,5 +34,37 @@
 	Достаточная статистика $T$ называется минимальной, если, $\forall T_1$ достаточной ${\exists g : T=g(T_1)}$
 \end{definition}
 Использование МДС максимально редуцирует имеющиеся данные
+
+\paragraph{Основные типы задачь статистики}
+\begin{itemize}
+	\item Точечное оценивание (статистики $\delta : \sX \rightarrow \Theta$)
+	\item Доверительное оценивание с уровнеи доверия $1-\alpha$ ($\mathcal{Y}$ - семейство подмножеств $\Theta$)
+		$$\Delta : \sX \rightarrow \mathcal{Y}$$
+	такие, что $P_\theta (\theta \in \Delta (\vec{X})) \geq 1-\alpha, \forall \theta \in \Theta$
+	\item Проверка гипотез (принятие решений) \\
+	$H:\theta \in \Theta_*, \Theta_* \subset \Theta$ - Гипотеза. Выдвигают $H_0 : \theta \in \Theta_0$ и $H_A : \theta \in \Theta$ Решающее правило - критерий
+	$$\phi : \sX \rightarrow [0;1]$$
+	$\phi(\vec{X})$ - вероятность выбрать альтернативу (отвергнуть $H_0$)
+\end{itemize}
+
+\paragraph{Асимптотический подход}
+Пусть $(\sX^{(n)},\sF^{(n)},\sP^{(n)})$ последовательность статистичиеских экспериментов
+$\sP^{(n)}=\{p_\theta^{(n)},\theta \in \Theta\}$
+
+\begin{definition}[Состоятельность оценки]
+	 Точечная оценка $\delta^{(n)}(\vec{X})$ называется состоятельной, если
+	 $$\delta^{(n)}(\vec{X}) \xrightarrow{p_\theta} \theta,\forall \theta \in \Theta $$
+\end{definition}
+
+\begin{definition}[Сильная состоятельность оценки]
+	Точечная оценка $\delta^{(n)}(\vec{X})$ называется сильно состоятельной, если
+	 $$\delta^{(n)}(\vec{X}) \xrightarrow[n \rightarrow \infty]{p_\theta = 1} \theta,\forall \theta \in \Theta $$
+\end{definition}
+
+\begin{definition}[Асимптотическая нормальность]
+	Точечьная оценка $\delta^{(n)}(\vec{X})$ называется асимптотически нормальной, если
+	$$\sqrt{n} (\delta^{(n)}(\vec{X}) - \theta) \underset{P_\theta}{\Rightarrow} \mathcal{N}(0,\sigma^2(\theta))$$
+\end{definition}
+Индикатор $\mathbbm{1}$
 
 \end{document}
