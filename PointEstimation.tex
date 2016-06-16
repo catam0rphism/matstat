@@ -8,7 +8,7 @@
 \begin{definition}[Функция потерь]
 	пусть $\theta$ реально значение параметра, тогда $W(\delta (\vec{X}),\theta)$ функция потерь, если
 	\begin{itemize}
-	 	\item $W(\delta (\vec(X),\theta)>0,\forall \vec{X}$
+	 	\item $W(\delta (\vec{X}),\theta)>0,\forall \vec{X} \in \sX$
 	 	\item $W(\theta,\theta)=0$
 	 \end{itemize} 
 \end{definition}
@@ -18,5 +18,8 @@
 	& W(\delta,\theta)=(\delta-\theta)^2 \tag{Гаусс}
 \end{align}
 
+\begin{definition}[Риск]
+	Риском называют $R(\delta,\theta) = \sE_\theta[W(\delta(\vec{X}),\theta)]$ 
+\end{definition}
 
 \end{document}
