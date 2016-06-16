@@ -72,4 +72,40 @@ $Y_1,\dots,Y_n$ - независимые наблюдения.
 		\end{pmatrix}
 	\end{align*}
 \end{enumerate}
+% 39
+\begin{definition}[Метод наименьших квадратов]~\\
+Пусть $Y = X^T\beta + \varepsilon$.\\
+Рассмотрим $S(\beta) = ||Y-X^T\beta||^2=(Y-X^T\beta)^T(Y-X^T\beta) = \sum_{i=1}^n(Y_i-\sum_{j=1}^mx_{ji}\beta_j)^2$.\\
+Тогда $\hat \beta$ называется МНК-оценкой $\beta$, если $\forall \beta: S(\hat \beta)<=S(\beta)$.
+\end{definition}
+МНК-оценка $\hat \beta$ находится как решение системы уравнений
+\[\begin{dcases}
+		\frac{\partial S}{\partial \beta_k}\bigg(-2\sum_{i=1}^nx_{ki}(Y_i-\sum_{j=1}^mx_{ji}\beta_j)^2\bigg) = 0\\
+		k \in (1,\dots,m)
+\end{dcases}\]
+\[\begin{dcases}
+		\sum_{i=1}^nx_{ki}Y_i=\sum_{i=1}^nx_{ki}\sum_{j=1}^mx_{ji}\beta_j = 0\\
+		k \in (1,\dots,m)
+\end{dcases}\]
+Или в матричной форме\\
+$XX^T\beta=XY$ - система нормальных уравнений\\
+$\hat\beta$ - решение системы, МНК-оценка\\
+$|XX^T| \neq 0 \implies \hat\beta = (XX^T)^{-1}XY$, т.е. $\exists!$ решение.\\
+\\
+\textbf{Геометрическая интерпретация}\\
+\[	&Y = \sum_{i=1}^m X_i\beta_i + \varepsilon\text{, где }X_j = \begin{pmatrix}
+	x_{j1}\\
+	\vdots\\
+	x_{jn}
+\end{pmatrix}}\text{ - транспонированные строки X.}\]
+Пусть $Y \in V_n$ - линейное пространство наблюдений, $V_r = \alpha(X_1,\dots,X_m)$  - линейное подпространство на $(X_1,\dots,X_m)$, а $r = rk(x)$ - размерность пространства.\\
+\begin{align*}
+\text{Тогда } &||Y-X^T\beta|| \text{- расстояние от $Y$ до точки  в $V_r$}\\
+&||Y-X^T\beta||\rightarrow \min\text{, если } \eta = X^T\beta=\proj_{V_r}Y\\
+\text{При этом } & X_k \perp (Y-X^T\beta), \forall k \in \{1\ldots m\}\\
+\iff & X_k^T(Y-X^T\beta) = 0, \forall k \in \{1\ldots m\}\\
+\iff & X(Y-X^T\beta) = 0\\
+\iff & XX^T\beta = XY\\
+\implies &\text{ существует единственное решение.}
+\end{align*}
 \end{document}
