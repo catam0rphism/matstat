@@ -47,7 +47,15 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	$$G(F_n) \underset{n\rightarrow\infty}{\rightarrow}G(F)$$
 \end{theorem}
 
-Выборочные квантили
+\begin{definition}[Выборочные квантили]
+	$\hat{\xi_p}$ - квантиль порядка $p$, $\hat{\xi_{p}}=X_{([np]+1)}$, если $np\notin\mathbb{Z}$, иначе $\hat{\xi_{p}}\in [X_{(np)};X_{(np+1)})$
+\end{definition}
+
+\begin{theorem}[Асимптотическая нормальность выборочных квантилей]
+	Пусть $f(\xi_p)>0$, $Z_{n,p}$ - выборочная квантиль, то $$Q=\sqrt{\frac{n}{p(1-p)}}f(\xi_p)(Z_{n,p} - \xi_p) \Rightarrow \mathcal{N}(0,1)$$ то есть $$ P_F(\sqrt{\frac{n}{p(1-p)}}f(\xi_p)(Z_{n,p} - \xi_p) < x) \underset{n\rightarrow\infty}{\rightarrow} \Phi(x), \forall x$$
+	где $\Phi(x) = \int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}\mathrm{d}t$ - функция распределения нормального распределения
+\end{theorem}
+
 % -------------------------------------------------------
 \paragraph{Параметрическое оценивание}
 \begin{definition}[Точечная оценка]
