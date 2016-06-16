@@ -4,12 +4,73 @@
 \paragraph{Регрессионный анализ}
 % 38
 \begin{definition}[Регрессия] ~\\
-	Пусть $Y$ - наблюдение,  $Z$ - характеристика, определяющая распределение $Y$, $F_z$ - распределение $Y$ при фиксированном $Z$.\\
+	Пусть $Y$ - наблюдение,  $Z$ - характеристика, определяющая распределение $Y$, $F_Z$ - распределение $Y$ при фиксированном $Z$.\\
 	Пусть $Y_1,\dots,Y_n$ - независимы.
 	Установим зависимость $Y_i$ от $i$.
 	Сопоставим $\forall i: i \mapsto Z_i \implies F_i \equiv F_{Z_i}$.
 	Обычно эту зависимость задают параметрически ($\ex: F_i = g_\theta(F_{Z_0}), \theta \in \R^d$).\\
-	Тогда $E_\theta(Y|Z) = g_\theta(z)$ - \textbf{регрессия} $Y$ по $Z$.
+	Тогда $E_\theta(Y|Z) = g_\theta(Z)$ - \textbf{регрессия} $Y$ по $Z$.
 \end{definition}
 
+\begin{definition}[Линейная регрессия] ~\\
+	Регрессия называется \textbf{линейной} если
+	\[\exists X(Z)=
+		\begin{pmatrix}
+		X_1(Z)\\
+		\vdots\\
+		X_n(Z)
+		\end{pmatrix}
+		\text{ - регрессор.} 
+	\]
+	\textbf{Модель линейной регрессии}
+	\[\sE_\theta(Y|Z) = X^T\beta,\ \beta =
+		\begin{pmatrix}
+			\beta_1\\
+			\vdots\\
+			\beta_n
+		\end{pmatrix}
+	\]
+	В условиях этой модели
+	\begin{align*}
+		\sE_\theta Y_i &= (X(Z_i))^T\beta\\
+		Y_i &= (X(Z_i))^T\beta + \varepsilon_i\\
+		Y &= X^T\beta + \varepsilon (\sE\varepsilon = 0)\\
+	\end{align*}
+	Где $X \in M_{m\timesn}$ - матрица регрессоров, $\beta$ - $m \times 1$ - столбец параметров, $\varepsilon = (\varepsilon_1,\dots,\varepsilon_n)^T\text{ - вектор отклонений.}$
+\end{definition}
+\textbf{Примеры регрессионных моделей.}
+$Y_1,\dots,Y_n$ - независимые наблюдения.
+\begin{enumerate}
+	\item Выборка
+	\[\sE Y_i = \beta_i \text{ Если $\varepsilon_i$ - НОРСВ, то } Y_1,\dots,Y_n\]
+	\item Простая регрессионная модель
+	\[Y_i = \beta_1 + \beta_2 Z_i + \varepsilon_i,\ X = \begin{pmatrix}
+		1   & \cdots & 1\\
+		Z_1 & \cdots & Z_n\\
+	\end{pmatrix}\]
+	\item Полиномиальная модель
+	\[Y_i = \sum_{j=1}^s \beta_jZ_i^{j-1},\ X = \begin{pmatrix}
+		1 & \cdots & 1\\
+		Z_1 & \cdots & Z_n\\
+		Z_1^2 & \cdots & Z_n^2\\
+		\vdots & \ddots & \vdots\\
+		Z_1^{s-1} & \cdots & Z_n^{s-1}
+	\end{pmatrix}\]
+	\item Простая группировка (однофакторный дисперсионный анализ)
+	\begin{align*}
+		&Z \in \{1,\dots,I\}\\
+		&\beta = (\beta_1,\dots,\beta_I)^T\\
+		&\sE(Y|Z) = \beta_Z\\
+		&Y_i = \beta_{Z_i} + \varepsilon_i\\
+		&\forall i < j: Z_i <= Z_j\\
+		&X = \begin{pmatrix}
+			1 & 1 & 0 & 0 & & & &\\
+			0 & 0 & 1 & 1 & &  \textbf{0} & &\\
+			0 & 0 & 0 & 0 & & & &\\
+			& & & & \ddots & & &\\
+			& & \textbf{0} & & & \ddots & &\\
+			& & & & & & 1 & 1
+		\end{pmatrix}
+	\end{align*}
+\end{enumerate}
 \end{document}
