@@ -137,4 +137,50 @@ $|XX^T| \neq 0 \implies \hat\beta = (XX^T)^{-1}XY$, т.е. $\exists!$ решен
 	Пусть $\psi$ - ДНО функция параметра, $\psi = C^T\beta, q = 1$. Тогда существует $\hat\psi$ - линейная несмещённая оценка, такая что $\hat\psi$ - НРМД оценка.\\
 	При этом для любых $\hat\beta$ решений системы нормальных уравнений $\hat\psi=C^T\hat\beta$
 \end{theorem}
+~\\
+% 41
+\textbf{Доверительное оценивание параметра.} ~\\
+Пусть $Y = X^T\beta + \varepsilon$, где $Y \in \R^n$ - вектор наблюдений, $X \in M_{m \times n}$ - матрица регрессоров, $\beta \in \R^m$ - вектор параметров, а $\varepsilon \in \R^n$ - вектор отклонений (ошибок).
+\begin{suggestion} ~\\
+	$\varepsilon \sim \sN(0, \sigma^2n),\ ((\varepsilon_1,\dots,\varepsilon_n) \text{ - НОРСВ } \sN(0,\sigma^2))$\\
+	Тогда $Y \sim \sN(X^T\beta, \sigma^2n),\ (Y_1,\dots,Y_n)$ - НСВ.\\
+	Пусть $\psi = C^T\beta$ - ДНО, а $\hat\psi=C^T\hat\beta$ - НРМД оценка.
+\end{suggestion}
+\begin{statement} ~\\
+	В данных условиях:
+	\begin{enumerate}
+		\item $\hat\psi \sim \sN(\psi, \Gamma(\psi))$
+		\item $\hat\psi,s^2$ - независимы.
+		\item $\cfrac{(n-r)s^2}{\sigma^2} \sim \bigchi_{n-r}^2$
+	\end{enumerate}
+	Известный факт:\\
+	Для $\xi = (\xi_1,\cdots,\xi_q)$, таких что $\xi \sim \sN(0,\Sigma),\ |\Sigma| \neq 0$
+	\[\xi^T\Sigma^{-1}\xi \sim \bigchi_q^2\]
+	Тогда:
+	\begin{align*}
+		(1) &\implies (\hat\psi-\psi)^T\Gamma^{-1}_{\hat\psi}(\hat\psi-\psi) \sim \bigchi_q^2\\
+		(3) &\implies \cfrac{(n-r)s^2}{\sigma^2} \sim \bigchi_{n-r}^2\\
+		(2) &\implies \cfrac{(\hat\psi-\psi)^T\Gamma^{-1}_{\hat\psi}(\hat\psi-\psi)}{q \cfrac{s^2}{\sigma^2}} \sim F_{q,n-r}\\
+			&\implies \Gamma^{-1}_{\hat\psi} = (B\sigma^2)^{-1} = \cfrac{B^{-1}}{\sigma^2}, B = C^TS^-C
+	\end{align*}
+\end{statement}
+\begin{definition}[Доверительный эллипсоид] ~\\
+Пусть $\hat\Theta = \{\psi \mid (\hat\psi - \psi)^TB^{-1}(\hat\psi - \psi) \leq qs^2x_\alpha\}$\\
+Где $x_\alpha = F^{-1}_{q,n-r}(1-\alpha)$, то есть $F_{1,n-r}(x_\alpha)=1-\alpha$\\
+Тогда $P_\theta(\psi \in \hat\Theta) = 1-\alpha, \forall \theta \in \Theta$\\
+Таким образом $\hat\Theta$ - доверительный эллипсоид уровня доверия $1-\alpha$\\
+\textbf{Частный случай: $q=1$}
+\begin{gather*}
+	\hat\psi \sim \sN(\psi,b\sigma^2),\ (b\sigma^2=\mathrm{D}\hat\psi)\\
+	\cfrac{\hat\psi-\psi}{\sqrt{b}\sigma}\sim\sN(0,1),\ \cfrac{(n-r)s^2}{\sigma^2}\sim\bigchi_{n-r}^2\\
+	\implies \cfrac{(\hat\psi-\psi)/\sqrt{b}\sigma}{\sqrt{\cfrac{(n-r)s^2}{(n-r)\sigma^2}}} = \cfrac{\hat\psi-\psi}{\sqrt{b}s} \sim S_{n-r}\\
+	t_\alpha:S_{n-r}(t_\alpha) = 1 * \cfrac{\alpha}{2}
+\end{gather*}
+Тогда
+\begin{gather*}
+	P_\theta(-t_\alpha \leq \cfrac{\hat\psi-\psi}{\sqrt{b}s} \leq t_\alpha) = 1 - \alpha, \forall \theta\\
+	P_\theta(\hat\psi - t_\alpha\sqrt{b}s \leq \psi \leq \hat\psi + t_\alpha\sqrt{b}s)\\
+\end{gather*}
+И $\hat\psi \pminus t_\alpha\sqrt{b}s$ - доверительный интервал уровня доверия $1 - \alpha$
+\end{definition}
 \end{document}
