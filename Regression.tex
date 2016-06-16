@@ -38,7 +38,7 @@
 	\end{align*}
 	Где $X \in M_{m\times n}$ - матрица регрессоров, $\beta$ - $m \times 1$ - столбец параметров, $\varepsilon = (\varepsilon_1,\dots,\varepsilon_n)^T\text{ - вектор отклонений.}$
 \end{definition}
-\textbf{Примеры регрессионных моделей.}
+\textbf{Примеры регрессионных моделей.} ~\\
 $Y_1,\dots,Y_n$ - независимые наблюдения.
 \begin{enumerate}
 	\item Выборка
@@ -97,7 +97,7 @@ $|XX^T| \neq 0 \implies \hat\beta = (XX^T)^{-1}XY$, т.е. $\exists!$ решен
 	x_{j1}\\
 	\vdots\\
 	x_{jn}
-\end{pmatrix}}\text{ - транспонированные строки X.}\]
+\end{pmatrix}\text{ - транспонированные строки X.}\]
 Пусть $Y \in V_n$ - линейное пространство наблюдений, $V_r = \alpha(X_1,\dots,X_m)$  - линейное подпространство на $(X_1,\dots,X_m)$, а $r = rk(x)$ - размерность пространства.\\
 \begin{align*}
 \text{Тогда } &||Y-X^T\beta|| \text{- расстояние от $Y$ до точки  в $V_r$}\\
@@ -109,7 +109,8 @@ $|XX^T| \neq 0 \implies \hat\beta = (XX^T)^{-1}XY$, т.е. $\exists!$ решен
 \implies &\text{ существует единственное решение.}
 \end{align*}
 % 40
-\textbf{ДНО функции параметра.} ~\\
+\\
+\textbf{ДНО функции параметра.}	
 \begin{definition}[Функция параметра] ~\\
 	Мы будем называть $\psi$ функцией параметра $\beta$, если
 	\[\psi = C^T\beta,\,(\psi = (\psi_1,\dots,\psi_q)^T)\]
@@ -125,7 +126,7 @@ $|XX^T| \neq 0 \implies \hat\beta = (XX^T)^{-1}XY$, т.е. $\exists!$ решен
 \begin{example} ~\\
 	Если $|XX^T| \neq 0$, $\hat\beta = (XX^T)^{-1}XY$, тогда
 	\begin{align*}
-		\sE_{\hat\beta} = (XX^T)^{-1}X\sEY &= (XX^T)^{-1}(XX^T)\beta = \beta\\
+		\sE_{\hat\beta} = (XX^T)^{-1}X\sE Y &= (XX^T)^{-1}(XX^T)\beta = \beta\\
 		\implies \sE_\theta\hat\psi &= \psi, \forall\psi = C^T\beta
 	\end{align*}
 \end{example}
