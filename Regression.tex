@@ -93,7 +93,7 @@ $\hat\beta$ - решение системы, МНК-оценка\\
 $|XX^T| \neq 0 \implies \hat\beta = (XX^T)^{-1}XY$, т.е. $\exists!$ решение.\\
 \\
 \textbf{Геометрическая интерпретация}\\
-\[	&Y = \sum_{i=1}^m X_i\beta_i + \varepsilon\text{, где }X_j = \begin{pmatrix}
+\[	Y = \sum_{i=1}^m X_i\beta_i + \varepsilon\text{, где }X_j = \begin{pmatrix}
 	x_{j1}\\
 	\vdots\\
 	x_{jn}
@@ -108,4 +108,32 @@ $|XX^T| \neq 0 \implies \hat\beta = (XX^T)^{-1}XY$, т.е. $\exists!$ решен
 \iff & XX^T\beta = XY\\
 \implies &\text{ существует единственное решение.}
 \end{align*}
+% 40
+\textbf{ДНО функции параметра.} ~\\
+\begin{definition}[Функция параметра] ~\\
+	Мы будем называть $\psi$ функцией параметра $\beta$, если
+	\[\psi = C^T\beta,\,(\psi = (\psi_1,\dots,\psi_q)^T)\]
+\end{definition}
+\begin{definition}[Линейная оценка] ~\\
+	Мы будем называть $\hat \psi$ линейной оценкой, если
+	\[\hat\psi = AY\ (A \in M_{q \times n})\]
+\end{definition}
+\begin{definition}[ДНО функция параметра] ~\\
+	Мы будем называть функцию параметра $\psi = C^T\beta$ допускающей несмещённое оценивание (ДНО), если
+	\[\exists \hat \psi = AY: \sE_\theta \hat \psi = \psi,\,\forall \theta \in \Theta = \R^m \times \R\]
+\end{definition}
+\begin{example} ~\\
+	Если $|XX^T| \neq 0$, $\hat\beta = (XX^T)^{-1}XY$, тогда
+	\begin{align*}
+		\sE_{\hat\beta} = (XX^T)^{-1}X\sEY &= (XX^T)^{-1}(XX^T)\beta = \beta\\
+		\implies \sE_\theta\hat\psi &= \psi, \forall\psi = C^T\beta
+	\end{align*}
+\end{example}
+\begin{statement} ~\\
+	Функция параметра $\psi = C^T\beta$ - ДНО $\iff \exists A: C^T = AX^T$
+\end{statement}
+\begin{theorem}[Гаусса-Маркова] ~\\
+	Пусть $\psi$ - ДНО функция параметра, $\psi = C^T\beta, q = 1$. Тогда существует $\hat\psi$ - линейная несмещённая оценка, такая что $\hat\psi$ - НРМД оценка.\\
+	При этом для любых $\hat\beta$ решений системы нормальных уравнений $\hat\psi=C^T\hat\beta$
+\end{theorem}
 \end{document}
