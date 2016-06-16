@@ -1,0 +1,15 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\paragraph{Регрессионный анализ}
+% 38
+\begin{definition}[Регрессия] ~\\
+	Пусть $Y$ - наблюдение,  $Z$ - характеристика, определяющая распределение $Y$, $F_z$ - распределение $Y$ при фиксированном $Z$.\\
+	Пусть $Y_1,\dots,Y_n$ - независимы.
+	Установим зависимость $Y_i$ от $i$.
+	Сопоставим $\forall i: i \mapsto Z_i \implies F_i \equiv F_{Z_i}$.
+	Обычно эту зависимость задают параметрически ($\ex: F_i = g_\theta(F_{Z_0}), \theta \in \R^d$).\\
+	Тогда $E_\theta(Y|Z) = g_\theta(z)$ - \textbf{регрессия} $Y$ по $Z$.
+\end{definition}
+
+\end{document}
