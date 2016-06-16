@@ -181,6 +181,58 @@ $|XX^T| \neq 0 \implies \hat\beta = (XX^T)^{-1}XY$, т.е. $\exists!$ решен
 	P_\theta(-t_\alpha \leq \cfrac{\hat\psi-\psi}{\sqrt{b}s} \leq t_\alpha) = 1 - \alpha, \forall \theta\\
 	P_\theta(\hat\psi - t_\alpha\sqrt{b}s \leq \psi \leq \hat\psi + t_\alpha\sqrt{b}s)\\
 \end{gather*}
-И $\hat\psi \pminus t_\alpha\sqrt{b}s$ - доверительный интервал уровня доверия $1 - \alpha$
+И $\hat\psi \pm t_\alpha\sqrt{b}s$ - доверительный интервал уровня доверия $1 - \alpha$
 \end{definition}
+~\\
+% 42
+\textbf{Проверка статистических гипотез.} ~\\
+Рассмотрим гипотезу типа
+\[H_0:\psi = 0,\ (\psi = C^T\beta = (\psi_1,\dots,\psi_q)^T)\]
+Легко обобщимую на $H_0: \psi = \psi_0$
+\begin{suggestion}
+	\begin{gather*}
+		|\Gamma_{\hat\psi}| \neq 0,\ (\hat\psi = C^T\hat\beta \text{ - НРМД оценка})\\
+		\Gamma_{\hat\psi} = C^TS^-C\sigma^2 \text{, то есть } |C^TS^-C| \neq 0
+	\end{gather*}
+\end{suggestion}
+\begin{definition}[Критерий на базе доверительного эллипсоида] ~\\
+	\textbf{Статистика}
+	\[T = \cfrac{\hat\psi^TB^{-1}\hat\psi}{qs^2}\, \overset{\,H_0}{\sim} F_{q,n-r}\]
+	\textbf{Критерий}
+	\[\varphi(x) = \begin{cases}
+		0, & T \leq x_\alpha\\
+		1, & T > x_\alpha
+	\end{cases}\]
+	Где $x_\alpha: F_{q,n-r}(x_\alpha) = 1 -\alpha$ - критерий уровня значимости $\alpha$
+\end{definition}
+\begin{definition}[Критерий на базе отношения правдоподобия] ~\\
+	\begin{gather*}
+		LR(Y,\theta) = \cfrac{\sup_{\psi=0}L(Y,\theta)}{\sup_\theta L(Y,\theta)}\\
+		L(Y,\theta) = \cfrac{1}{2\pi^{n/2}\sigma^n}\exp(-\cfrac{1}{2\sigma^2}\sum_{i=1}^n(Y_i-\sum_{j=1}^mx_{ji}\beta_j)^2) = \cfrac{1}{2\pi^{n/2}}\exp(-\cfrac{1}{2\sigma^2}||Y - X^T\beta||^2)
+	\end{gather*}
+	То есть МНК оценка $\hat\beta$ - ОМП.
+	\begin{gather*}
+		LL(Y,\theta)= -\cfrac{n}{2}\log(2\pi)-n\log\sigma-\cfrac{1}{2\sigma^2}||Y - X^T\beta||^2\\
+		\cfrac{\partial LL(Y,\theta)}{\partial \sigma} = -\cfrac{n}{\sigma} + \cfrac{1}{\sigma^3}||Y-X^T\beta||^2=0\\
+		\sigma^2 = \cfrac{1}{n}||Y-X^T\beta||^2 \implies \hat\sigma^2 = \cfrac{1}{n}||Y - X^T\hat\beta||^2
+	\end{gather*}
+	Пусть $\hat\beta_H$ - оценка, при которой $||Y - X^T\hat\beta_H||^2 \leq ||Y - X^T\beta||^2,\ \forall \beta: \psi = 0$\\
+	Тогда:
+	\begin{gather*}
+		\hat\sigma_H^2 = \cfrac{1}{n}||Y - X^T\hat\beta_H||^2\\
+		LR = \cfrac{\hat\sigma^2}{\hat\sigma_H^2} = \cfrac{||Y - X^T\hat\beta||^2}{||Y - X^T\hat\beta_H||^2}
+	\end{gather*}
+	Обычно, впрочем, используют
+	\begin{gather*}
+		\mathbb{F} = \cfrac{SS_H}{SS_c}\\
+		SS_c = ||Y - X^T\hat\beta||^2\\
+		SS_H = ||Y - X^T\hat\beta_H||^2 - SS_c\\
+	\end{gather*}
+	При этом очевидно, что $\mathbb{F}$ выражается через $LR$.
+\end{definition}
+\begin{statement}
+	\[\mathbb{F} = T\]
+	Таким образом для вычисления статистики $T$ можно использовать $\mathbb{F}$.
+	При альтернативе распределения $T(\mathbb{F})$ - нецентральные распределения Фишера-Снекдора.
+\end{statement}
 \end{document}
