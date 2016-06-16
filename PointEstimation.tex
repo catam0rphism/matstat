@@ -1,6 +1,23 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\paragraph{Непараметрическое оценивание (Выборочный подход)}
+Пусть $X_1,\dots\,X_n$ - выборка из распределения $P_\theta, \theta\in\Theta$, истиное значение $P_\theta$ будем называеть {\itтеоретическим распределением}.
+\begin{definition}[Выборочная функция распределения]
+	Выборочной функцией распределения называют $$F_n(x)=\frac{1}{n}\sum_{i=1}^n\mathbbm{1}_{\{X_i < x\}}=\frac{\text{Число наблюдений меньших }x}{\text{общее число наблюдений}}$$
+\end{definition}
+
+\begin{theorem}[Гливенко-Кантелли]
+	$$\sup_x \{|F_n(x)-F(x)|\} \xrightarrow[n\rightarrow \infty]{P_\theta=1} 0,\forall F$$
+\end{theorem}
+Утверждает сильную состочтельность $F_n$
+
+\begin{theorem}[Колмогорова]
+	$$\sqrt{n} \sup_x \{F_n(x)-F(x)\} \underset{F}{\Rightarrow}\mathcal{K}$$
+\end{theorem}
+Где $\mathcal{K}$ -  распределение Колмогорова, функция распределения ${\mathcal{K}(x) = \sum_{j=-\infty}^{\infty} (-1)^j e^{-2j^2x^2}}$
+
+\paragraph{Параметрическое оценивание}
 \begin{definition}[Точечная оценка]
 	Статистика $\delta ( \vec{X} )$, $\delta : \sX \rightarrow \Theta$ называется точечной оценкой
 \end{definition}
@@ -19,7 +36,7 @@
 \end{align}
 
 \begin{definition}[Риск]
-	Риском называют $R(\delta,\theta) = \sE_\theta[W(\delta(\vec{X}),\theta)]$ 
+	Риском называют $R(\delta,\theta) = \sE_\theta[W(\delta(\vec{X}),\theta)]$
 \end{definition}
 
 \end{document}
