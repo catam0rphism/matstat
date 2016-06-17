@@ -100,6 +100,38 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	$$L(\vec{X};\theta) = g(T(\vec{X}),\theta)h(\vec{X})$$ где $g(t,\theta)$ и $h$ некоторые неотрицательные функции
 \end{theorem}
 
+\paragraph{Оценка максимального правдоподобия}
+\begin{definition}[Функция правдоподобия] ~\\
+	Пусть $X_1,\dots,X_n$ - набор независимых наблюдений с плотностями $f_{\theta,1},\dots,f_{\theta,n}$ соответственно. Мы будем называть функцией правдоподобия
+	\[L(\vec X, \theta) = \prod_{i=1}^nf_{\theta,i}(X_i),\ \theta \in \Theta\]
+	А значение этой функции при фиксированном $\theta$ правдоподобием наблюдений. Также используют $LL(\vec{X},\theta)=\log L(\vec{X},\theta)$
+\end{definition}
+
+\begin{definition}[Метод максимального правдоподобия]
+Идея: найти значение $\hat\theta(\vec X) \in \Theta$ такое, что
+	\[\forall \theta \in \Theta: L(\vec X, \hat\theta(\vec X)) \leq L(\vec X, \theta)\]
+\end{definition}
+	
+\begin{definition}[Достаточная статистика]
+	Статистика $T$ назвается достаточной, если условное распределение $X$ при условии $T$ не зависит от параметра
+	$$P_\theta(X\in A|T) = P_{X|T}(A),\forall \theta \in \Theta $$
+\end{definition}
+
+\begin{theorem}[Рао -- Блэкуэлла -- Колмогорова]
+	Если $T$ - достаточная статистика $\delta$ - оценка параметра \theta, то оценка $\sE(\delta|T)$, если $W$ выпукла (вниз), то $R(\delta,\theta)\geq R(\sE(\delta|T),\theta)$
+\end{theorem}
+Суть: лучшая оценка всегда может быть получена как функция от достаточных статистик.
+
+\begin{definition}[Полная статистика]
+	Статистика $T$ называется полной, если с вероятностью 1 $$\forall\theta\in\Theta.\sE_\theta g(T)=0 \rightarrow g(T)=0$$
+\end{definition}
+Полная достаточная статистика всегда является минимальной.
+% !!!!!!!!!!!!!!!!!!!!   ???   !!!!!!!!!!!!!!!!!!!!!!!!
+\begin{theorem}[Лемана-Шеффе]
+	В классе оценок с данным смещением, существует не более одной, являющейся функцией от достаточной статистики
+\end{theorem}
+Если МДС полная, то при фиксированном значении смещения существует единственная оценка, минимизирующая риск в классе оценок с таким смещением.
+
 \paragraph{Минимаксный и байесовский подходы}
 \begin{definition}[Минимаксная оценка]
 	Оценка $\delta_0$ называется минимаксной, если они минимизиреут максимальный риск $$R(\delta_0,\theta)=\inf_\delta \sup_{\theta\in\Theta} R(\delta,\theta)$$
@@ -109,5 +141,10 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \begin{definition}[Байесовский риск и байесовская оценка]
 	Величина $$R(\delta)=\int_\Theta R(\delta,\theta)Q(\mathrm{d}\theta) $$ называется байесовским риском оценки $\delta$. Оценка, минимизирующая байесовский риск называется байесовской
 \end{definition}
+
+\begin{theorem}[Лемана]
+	Пусть $\{\delta_n\}_{n\in\mathbb{N}}$ последовательность байесовских оценок по отношению к априорным распределениям $\{Q_n\}$ соответственно, тогда $\delta$ - минимаксная
+	$$\delta : \sup_\theta R(\delta,\theta) \leq \underset{n\rightarrow\infty}{\lim\sup}\int_\Theta R(\delta_n,\theta)\mathrm{d}Q_n$$
+\end{theorem}
 
 \end{document}
