@@ -494,6 +494,21 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{definition}
 
 \paragraph{51. Лемма Неймана-Пирсона}
+\begin{theorem}[Лемма Неймана-Пирсона] ~\\
+	\begin{enumerate}
+		\item Существует наиболее мощный критерий уровня значимости $\alpha$ проверки $H_0: \theta = \theta_0$ при $H_A: \theta = \theta_A$
+		\item Данный критерий может быть построен следующим образом:
+		\[\varphi(\vec x) = \begin{cases}
+			0, &l(\vec x, \theta_A, \theta_0) < c_\alpha \\
+			p, &l(\vec x, \theta_A, \theta_0) = c_\alpha \\
+			1, &l(\vec x, \theta_A, \theta_0) > c_\alpha
+		\end{cases}\]
+		При этом значение $c_\alpha$ однозначно опредеятся из условия:
+		\[\sE_{\theta_0}\varphi(\vec x) = P_{\theta_0}(l(\vec x, \theta_A, \theta_0) > c_\alpha) + pP_{\theta_0}(l(\vec x, \theta_A, \theta_0) = c_\alpha) = \alpha\]
+		Если $P_{\theta_0}(l(\vec x, \theta_A, \theta_0) = c_\alpha) > 0$, то значение $p \in [0,1)$ определено однозначно.
+		\item На множестве $l(\vec x, \theta_A, \theta_0) \neq c_\alpha$ НМ критерий определён однозначно
+	\end{enumerate}
+\end{theorem}
 
 \paragraph{52. Проверка гипотез о параметрах линейной регрессионной модели (F-критерий)}
 
