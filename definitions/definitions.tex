@@ -26,6 +26,7 @@
 \newcommand{\sD}{\mathrm{D}}
 \newcommand{\sN}{\mathrm{N}} % N as N(a,s^2)
 \newcommand{\R}{\mathbb{R}} % R as in Real
+\newcommand{\N}{\mathbb{N}} % N as in Natural
 \newcommand*{\bigchi}{\mbox{\Large$\chi$}} % Chi for chi-square
 \DeclareMathOperator{\ex}{ex} % Example
 \DeclareMathOperator{\proj}{Pr} % Projection
@@ -330,6 +331,9 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \paragraph{34. Определение экспоненциального семейства}
 
 \paragraph{35. Определение полной достаточной статистики и подчиненной статистики}
+\begin{definition}[Полная достаточная статистика] ~\\
+	Достаточная статистика $T$ называется полной, если выполнение условия $\forall \theta \in \Theta: \sE_\theta g(T) = 0$ влечет $g(T) = 0$  с вероятностью 1.
+\end{definition}
 \begin{definition}[Подчиненная статистика] ~\\
 	Статистика $T$ называется подчиненной, если её распределение не зависит от параметра
 	$$P_\theta (T\in A) = P_T(A)$$
@@ -338,13 +342,44 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \paragraph{36. В чем состоит свойство асимптотической нормальности оценки максимального правдоподобия}
 
 \paragraph{37. Что такое функция правдоподобия}
-
+\begin{definition}[Функция правдоподобия] ~\\
+	Пусть $X_1,\dots,X_n$ - набор независимых наблюдений с плотностями $f_{\theta,1},\dots,f_{\theta,n}$ соответственно. Мы будем называть функцией правдоподобия
+	\[L(\vec X, \theta) = \prod_{i=1}^nf_{\theta,i}(X_i),\ \theta \in \Theta\]
+	А значение этой функции при фиксированном $\theta$ правдоподобием наблюдений.
+\end{definition}
+Правдоподобие - это вероятность того, что теоретическое распределение приняло значения из выборки.
 \paragraph{38. Что представляет собой семейство распределений Пуассона}
-
+\begin{definition}[Распределение Пуассона] ~\\
+	Рассмотрим последовательность биномиальных распределений $Bi(p,k),k \in \N, p = \lambda/k$. По теореме Пуассона эта последовательность сходится при $n\rightarrow\infty$ к распределению Пуассона
+	\[P(\lambda) = \cfrac{\lambda^k}{k!}e^{-\lambda}\]
+	Отметим, что если $X \sim P(\lambda_1)$ и $Y \sim P(\lambda_2)$ - НСВ, то $X + Y \sim P(\lambda_1 + \lambda_2)$
+\end{definition}
 \paragraph{39. Какие распределения называются показательными}
 
 \paragraph{40. Определение регулярного эксперимента и информации Фишера}
-
+\begin{definition}[Регулярный эксперимент] ~\\
+	Пусть $(\sX,\sF,\sP), \sP = \{P_\theta, \theta \in \Theta\}$ - статистический эксперимент, $\Theta \subseteq \R$.\\
+	Эксперимент называется регулярным, если выполняются следующие требования:
+	\begin{enumerate}
+		\item $\rho << \mu, p_\theta = \cfrac{\mathrm{d}\rho_\theta}{\mathrm{d}\mu}, \theta \in \Theta$\\
+			  $p_\theta(\vec X)$ - непрерывно дифференцируема по $\theta$ (для почти всех $x$), т.е.
+			  $\exists\, {p'}_\theta, (x) = \cfrac{\partial p_\theta(x)}{\partial\theta}$ - непрерывная функция
+		\item $\cfrac{\partial}{\partial\theta}\int\limits_\sX p_\theta(x)\mathrm{d}\mu(x) = \int\limits_\sX \cfrac{\partial p_\theta(x)}{\partial\theta}\mathrm{d}\mu(x)$
+		\item $\exists I(\theta): 0 < I(\theta) < \infty$, определяемое соотношением:
+		\[I(\theta) = \int\limits_\sX \cfrac{p'(\vec X)^2}{p(\vec X)}\mathrm{d}\mu(\vec X)\]
+	\end{enumerate}
+	Или же в терминах функций правдоподобия:
+	\begin{gather*}
+		LL(\vec X, \theta) = \log L(\vec X, \theta)\\
+		\cfrac{\partial LL(\vec X, \theta)}{\partial\theta} = \cfrac{\cfrac{\partial L(\vec X, \theta)}{\partial \theta}}{L(\vec X, \theta)} = \cfrac{{p'}_\theta(\vec X)}{p_\theta(\vec X)}
+	\end{gather*}
+	\begin{enumerate}
+		\item $L(\vec X, \theta)$ - непрерывна и дифференцируема по $\theta$
+		\item $\sE_\theta\cfrac{\partial LL(\vec X, \theta)}{\partial\theta} = 0,\ \forall \theta$
+		\item С теми же условиями на $I(\theta)$:
+		\[I(\theta) = \sE_\theta\bigg(\cfrac{\partial LL(\vec X, \theta)}{\partial \theta}\bigg)^2 = \sD_\theta\bigg(\cfrac{\partial LL(\vec X, \theta)}{\partial \theta}\bigg)\]
+	\end{enumerate}
+\end{definition}
 \paragraph{41. Неравенство Рао-Крамера}
 
 \paragraph{42. Какая оценка называется эффективной по Фишеру}
@@ -353,9 +388,8 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 
 \paragraph{44. Что называется доверительным интервалом уровня $\alpha$}
 \begin{definition}[Доверительный интервал уровня $\alpha$] ~\\
-Интервал $[T_1,T_2]$, образованной парой статистик $T_1(\bar X)$ и $T_2(\bar X)$ называется доверительным интервалом с уровнем доверия $\alpha$, если
-\[\forall \theta \in \Theta: P_\theta(T_1 \leq \theta \leq T_2) \geq \alpha\]
-	
+	Интервал $[T_1,T_2]$, образованной парой статистик $T_1(\bar X)$ и $T_2(\bar X)$ называется доверительным интервалом с уровнем доверия $\alpha$, если
+	\[\forall \theta \in \Theta: P_\theta(T_1 \leq \theta \leq T_2) \geq \alpha\]
 \end{definition}
 
 \paragraph{45. Законы больших чисел}
@@ -370,7 +404,7 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 
 \paragraph{50. Выражение вероятностей ошибок в терминах критерия}
 
-\par**agraph{51. Лемма Неймана-Пирсона}
+\paragraph{51. Лемма Неймана-Пирсона}
 
 \paragraph{52. Проверка гипотез о параметрах линейной регрессионной модели (F-критерий)}
 
