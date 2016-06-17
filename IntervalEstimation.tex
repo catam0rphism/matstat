@@ -49,4 +49,22 @@
 
 Если функция правдоподобия дважды дифференциируема по $\theta$ под знаком интеграла, то $$I(\theta)=-\sE(\frac{\partial^2}{\partial\theta^2}\ln L(\vec{X};\theta))$$
 
+\begin{suggestion}
+	Пусть $(\sX_1,\sF_1,\sP_1)$ и $(\sX_2,\sF_2,\sP_2)$ регулярные эесперименты с информациями $I_1(\theta)$ и $I_2(\theta)$ соответственно. Тогда эксперимент $(\sX_1\times\sX_2,\sigma(\sF_1\times\sF_2),\sP)$, где $P_\theta(d\vec{X})=P_{1,\theta}(d\vec{X})P_{2,\theta}(d\vec{X})$ регулярен с информацией $I(\theta)=I_1(\theta)+I_2(\theta)$
+\end{suggestion}
+
+\begin{theorem}[Неравенство Рао -- Крамера]
+	Пусть эксперимент регулярен, $\delta$ - разрешенная оценка параметрической функции $g(\theta)$, тогда
+	$$\sE_\theta(\delta-g(\theta))^2\geq \frac{(g'(\theta)-b'_g(\theta))^2}{I(\theta)} + b_g^2(\theta)$$
+	где $b(\theta)=\sE\delta - g(\theta)$ смещение оценок
+\end{theorem}
+
+Равенство достигается при условии, что оценка R-эфективная
+
+\begin{suggestion}
+	Если $\delta$ - Эффективная по Фишеру оценка параметра, то $\delta$ - оценка максимального правдоподобия
+\end{suggestion}
+
+Стоит заметить, что $$I(\theta)\sE_\theta(\delta-g(\theta))^2 \underset{n\rightarrow\infty}{\rightarrow}1$$
+
 \end{document}
