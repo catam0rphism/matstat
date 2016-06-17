@@ -177,7 +177,7 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	\[\forall \varepsilon > 0 : P(|\xi_n-\xi|\geq\varepsilon)\underset{n\rightarrow\infty}{\longrightarrow}0\]
 \end{definition}
 \begin{definition}[Сходимость почти наверное] ~\\
-	Мы говорим, что последовательность СВ $\{\xi_n\}$ сходится почти наверное к СВ $\xi$ при $n\rightarrow\infty$ ($\xi_n\rightarrow\xi$), если
+	Мы говорим, что последовательность СВ $\{\xi_n\}$ сходится почти наверное к СВ $\xi$ при $n\rightarrow\infty$ ($\xi_n \xrightarrow{\text{п.н.}} \xi$), если
 	\[P\{\omega:\xi_n(\omega)\underset{n\rightarrow\infty}{\longrightarrow}\xi(\omega)\}=1\]
 \end{definition}
 \begin{definition}[Сходимость по распределению] ~\\
@@ -262,7 +262,7 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \paragraph{24. Как используются теорема Рао-Блэкуэлла-Колмогорова и теорема Лемана-Шеффе при построении НРМД-оценки}
 \begin{statement}
 	По теореме Рао-Блэкуэлла-Колмогорова, если $T$ - достаточная статистика семейства $\sP$, а $\delta$ - оценка параметра $\theta$ и $\eta=\sE(\delta|T)$:
-	\[R(\delta,\theta)\geqR(\eta,\theta)\]
+	\[R(\delta,\theta)\geq R(\eta,\theta)\]
 	Для несмещённой оценки $\delta$ параметра $\theta$
 	\[R(\delta,\theta) = \sD(\delta, \theta)\]
 	По теореме Лемана-Шеффе существует не более одной несмещённой оценки параметра $\theta$, являющейся функцией от полной достаточной статистики, то есть если $T$ - полная достаточная статистика, то
@@ -290,6 +290,14 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{statement}
 
 \paragraph{28. Связь между различными видами сходимости случайных величин и распределений}
+\begin{lemma}[О видах сходимости] ~\\
+	Дано: $\xi_n,\xi$
+	\begin{enumerate}
+		\item $\xi_n\xrightarrow{\text{п.н.}}\xi \implies \xi_n \overset{P}{\rightarrow}\xi$
+		\item $\xi_n\underset{p}{\rightarrow}\xi \implies \xi_n \overset{P}{\rightarrow}\xi$
+		\item $\xi_n \overset{P}{\rightarrow}\xi \implies \xi_n \Rightarrow \xi$
+	\end{enumerate}
+\end{lemma}
 
 \paragraph{29. Метод максимального правдоподобия}
 
