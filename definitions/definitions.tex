@@ -185,14 +185,46 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \paragraph{17. Построение Хи-квадрат, Стьюдента, Фишера-Снедекора распределений с помощью выборки из нормального закона}
 
 \paragraph{18. Лемма Фишера}
+\begin{theorem}[Фишера] ~\\
+	Пусть $X_1,\dots,X_n$ - выборка из $N(a,\sigma^2)$. Тогда:
+	\begin{enumerate}
+		\item $\sqrt{n}\cfrac{\bar X - a}{\sigma} \ in N(0,1)$
+		\item $\bar X$ и $s^2$ - независимые статистики
+		\item $\cfrac{ns^2}{\sigma^2}$ имеет $\bigchi^2_{n-1}$ распределение
+		\item $\sqrt{n-1}\cfrac{\bar X - a}{s}$ имеет $S_{n-1}$ распределение
+	\end{enumerate}
+\end{theorem}
 
 \paragraph{19. Что такое функция потерь, риск}
+\begin{definition}[Функция потерь] ~\\
+	Пусть $\theta$ реальное значение параметра, тогда $W(\delta (\vec{X}),\theta)$ функция потерь, если
+	\begin{itemize}
+	 	\item $W(\delta (\vec{X}),\theta)>0,\forall \vec{X} \in \sX$
+	 	\item $W(\theta,\theta)=0$
+	 \end{itemize} 
+\end{definition}
+Используют различные функции потерь (в дальнейшем используем функцию Гаусса)
+\begin{align}
+	& W(\delta,\theta)=|\delta-\theta| \tag{Лаплас} \\
+	& W(\delta,\theta)=(\delta-\theta)^2 \tag{Гаусс}
+\end{align}
+\begin{definition}[Риск]~\\
+	Риском (функцией риска) называют $R(\delta,\theta) = \sE_\theta[W(\delta(\vec{X}),\theta)]$
+\end{definition}
 
 \paragraph{20. Какая оценка называется состоятельной}
+\begin{definition}[Состоятельная оценка] ~\\
+	 Точечная оценка $\delta^{(n)}(\vec{X})$ называется состоятельной, если
+	 $$\delta^{(n)}(\vec{X}) \xrightarrow{p_\theta} \theta,\forall \theta \in \Theta $$
+\end{definition}
 
 \paragraph{21. Какая оценка называется несмещенной, что такое смещение}
 
 \paragraph{22. Какая оценка называется асимптотически нормальной}
+\begin{definition}[Асимптотически нормальная оценка] ~\\
+	Точечная оценка $\delta^{(n)}(\vec{X})$ называется асимптотически нормальной, если
+	$$\sqrt{n} (\delta^{(n)}(\vec{X}) - \theta) \underset{P_\theta}{\Rightarrow} \mathcal{N}(0,\sigma^2(\theta))$$
+\end{definition}
 
 \paragraph{23. Определение несмещенной оценки с равномерно минимальной дисперсией}
 
@@ -201,14 +233,33 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \paragraph{25. Неравенство Гельдера}
 
 \paragraph{26. Что представляет собой простая регрессионная модель}
+\begin{statement}[Простая регрессионная модель]
+	\[Y_i = \beta_1 + \beta_2 Z_i + \varepsilon_i,\ X = \begin{pmatrix}
+		1   & \cdots & 1\\
+		Z_1 & \cdots & Z_n\\
+	\end{pmatrix}\]
+\end{statement}
 
 \paragraph{27. Что представляет собой полиномиальная регрессионная модель}
+\begin{statement}[Полиномиальная модель]
+	\[Y_i = \sum_{j=1}^s \beta_jZ_i^{j-1},\ X = \begin{pmatrix}
+		1 & \cdots & 1\\
+		Z_1 & \cdots & Z_n\\
+		Z_1^2 & \cdots & Z_n^2\\
+		\vdots & \ddots & \vdots\\
+		Z_1^{s-1} & \cdots & Z_n^{s-1}
+	\end{pmatrix}\]
+\end{statement}
 
 \paragraph{28. Связь между различными видами сходимости случайных величин и распределений}
 
 \paragraph{29. Метод максимального правдоподобия}
 
 \paragraph{30. Определение достаточной статистики}
+\begin{definition}[Достаточная статистика]
+	Статистика $T$ назвается достаточной, если условное распределение $X$ при условии $T$ не зависит от параметра
+	$$P_\theta(X\in A|T) = P_{X|T}(A),\forall \theta \in \Theta $$
+\end{definition}
 
 \paragraph{31. Теорема факторизации Неймана-Фишера}
 
@@ -219,6 +270,10 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \paragraph{34. Определение экспоненциального семейства}
 
 \paragraph{35. Определение полной достаточной статистики и подчиненной статистики}
+\begin{definition}[Подчиненная статистика] ~\\
+	Статистика $T$ называется подчиненной, если её распределение не зависит от параметра
+	$$P_\theta (T\in A) = P_T(A)$$
+\end{definition}
 
 \paragraph{36. В чем состоит свойство асимптотической нормальности оценки максимального правдоподобия}
 
@@ -237,6 +292,11 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \paragraph{43. Центральная предельная теорема Леви}
 
 \paragraph{44. Что называется доверительным интервалом уровня $\alpha$}
+\begin{definition}[Доверительный интервал уровня $\alpha$] ~\\
+Интервал $[T_1,T_2]$, образованной парой статистик $T_1(\bar X)$ и $T_2(\bar X)$ называется доверительным интервалом с уровнем доверия $\alpha$, если
+\[\forall \theta \in \Theta: P_\theta(T_1 \leq \theta \leq T_2) \geq \alpha\]
+	
+\end{definition}
 
 \paragraph{45. Законы больших чисел}
 
