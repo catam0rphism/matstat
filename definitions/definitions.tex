@@ -300,6 +300,15 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{lemma}
 
 \paragraph{29. Метод максимального правдоподобия}
+\begin{definition}[Функция правдоподобия] ~\\
+	Пусть $X_1,\dots,X_n$ - набор независимых наблюдений с плотностями $f_{\theta,1},\dots,f_{\theta,n}$ соответственно. Мы будем называть функцией правдоподобия
+	\[L(\vec X, \theta) = \prod_{i=1}^nf_{\theta,i}(X_i),\ \theta \in \Theta\]
+	А значение этой функции при фиксированном $\theta$ правдоподобием наблюдений.
+\end{definition}
+\begin{definition}[Метод максимального правдоподобия] ~\\
+	Идея: найти значение $\hat\theta(\vec X) \in \Theta$ такое, что
+	\[\forall \theta \in \Theta: L(\vec X, \hat\theta(\vec X)) \leq L(\vec X, \theta)\]
+\end{definition}
 
 \paragraph{30. Определение достаточной статистики}
 \begin{definition}[Достаточная статистика]
