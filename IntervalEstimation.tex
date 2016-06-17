@@ -31,22 +31,6 @@
 	При этом $I(\theta)$ - информация Фишера.
 \end{definition}
 
-\begin{theorem}[Неравенство Рао-Крамера] ~\\
-	Пусть $(\sX,\sF,\sP), \sP = \{P_\theta, \theta \in \Theta\}$ - статистический эксперимент, $I(\theta)$ - информация Фишера, $\delta$ - разрешённая оценка, $b$ - диффиренцируемое смещение $\theta$	$(b(\theta) = \sE_\theta\delta(\vec X)-\theta)$, тогда
-	\[R_\delta(\theta)\geq\cfrac{(1+b'(\theta))^2}{I(\theta)}+b(\theta)^2\]
-\end{theorem}
-\begin{suggestion} ~\\
-	\begin{enumerate}
-		\item Если $\delta$ - несмещённая оценка, то
-		\[R_\delta(\theta)\geq\cfrac{1}{I(\theta)}\]
-		\item Пусть $X_1,\dots,X_n$ - выборка из распределения $F$, $I_1(\theta)$ - информация по $X_1$. Тогда
-		\begin{gather*}
-			I(\theta) = nI_1(\theta)\\
-			\implies R_\delta(\theta)\geq\cfrac{1}{nI_1(\theta)}
-		\end{gather*}
-	\end{enumerate}
-\end{suggestion}
-
 Если функция правдоподобия дважды дифференциируема по $\theta$ под знаком интеграла, то $$I(\theta)=-\sE(\frac{\partial^2}{\partial\theta^2}\ln L(\vec{X};\theta))$$
 
 \begin{suggestion}
@@ -61,10 +45,38 @@
 
 Равенство достигается при условии, что оценка R-эфективная
 
-\begin{suggestion}
-	Если $\delta$ - Эффективная по Фишеру оценка параметра, то $\delta$ - оценка максимального правдоподобия
+
+\begin{suggestion} ~\\
+	\begin{enumerate}
+		\item Если $\delta$ - несмещённая оценка, то
+		\[R_\delta(\theta)\geq\cfrac{1}{I(\theta)}\]
+		\item Пусть $X_1,\dots,X_n$ - выборка из распределения $F$, $I_1(\theta)$ - информация по $X_1$. Тогда
+		\begin{gather*}
+			I(\theta) = nI_1(\theta)\\
+			\implies R_\delta(\theta)\geq\cfrac{1}{nI_1(\theta)}
+		\end{gather*}
+	\end{enumerate}
 \end{suggestion}
 
-Стоит заметить, что $$I(\theta)\sE_\theta(\delta-g(\theta))^2 \underset{n\rightarrow\infty}{\rightarrow}1$$
+\begin{suggestion}
+	Если $\delta$ - Эффективная по Фишеру оценка параметра и эксперимент регулярен, то $\delta$ - оценка максимального правдоподобия
+\end{suggestion}
+
+\begin{definition}
+	Оценка $\delta$ называется асимптотически R-эфективной оценкой параметра $g(\theta)$, если
+	$$I(\theta)\sE_\theta(\delta-g(\theta))^2 \underset{n\rightarrow\infty}{\rightarrow}1$$
+\end{definition}
+
+\begin{definition}[Однопараметрическое экспоненциальное семейство распределений]
+	$$f_1(x;\theta)=h_*(x)e^{a(\theta)\delta_*(x)+r(\theta)}$$
+\end{definition}
+
+Так же можно сказать, что,обычно, уравнение $\frac{\partial\log L(X_1,\dots,X_n;\theta)}{\partial\theta}=0$ имеет решение, сходящееся по вероятности при $n \rightarrow \infty$ к истиному значению $\theta$, при чем оно является асимптотически эффективной и асимптотически нормальной оценкой для $\theta$
+
+\paragraph{Интервальное оценивание}
+
+\begin{definition}[Доверительный интервал]
+	Интервал $[T_1,T_2]$, образовонный парой статистик $T_1(X_1,\dots,X_n)$ b и $T_2(X_1,\dots,X_n)$ называется доверительным интервалом уровня доверия $1-\alpha$, если $\forall \theta\in\Theta P_\theta(T_1\leq\theta\leq T_2)\geq 1-\alpha$
+\end{definition}
 
 \end{document}
