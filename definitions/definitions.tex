@@ -37,6 +37,7 @@
 \newtheorem*{example}{Пример}
 \newtheorem*{statement}{Утверждение}
 \newtheorem*{suggestion}{Предложение}
+\newtheorem*{addition}{Дополнение}
 
 \begin{document}
 \paragraph{1. Что такое регрессия величины Y по величине X и что представляет собой модель линейной регрессии} % (fold) 
@@ -379,10 +380,33 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 		\item С теми же условиями на $I(\theta)$:
 		\[I(\theta) = \sE_\theta\bigg(\cfrac{\partial LL(\vec X, \theta)}{\partial \theta}\bigg)^2 = \sD_\theta\bigg(\cfrac{\partial LL(\vec X, \theta)}{\partial \theta}\bigg)\]
 	\end{enumerate}
+	При этом $I(\theta)$ - информация Фишера.
 \end{definition}
 \paragraph{41. Неравенство Рао-Крамера}
+\begin{theorem}[Неравенство Рао-Крамера] ~\\
+	Пусть $(\sX,\sF,\sP), \sP = \{P_\theta, \theta \in \Theta\}$ - статистический эксперимент, $I(\theta)$ - информация Фишера, $\delta$ - разрешённая оценка, $b$ - диффиренцируемое смещение $\theta$	$(b(\theta) = \sE_\theta\delta(\vec X)-\theta)$, тогда
+	\[R_\delta(\theta)\geq\cfrac{(1+b'(\theta))^2}{I(\theta)}+b(\theta)^2\]
+\end{theorem}
+\begin{addition} ~\\
+	\begin{enumerate}
+		\item Если $\delta$ - несмещённая оценка, то
+		\[R_\delta(\theta)\geq\cfrac{1}{I(\theta)}\]
+		\item Пусть $X_1,\dots,X_n$ - выборка из распределения $F$, $I_1(\theta)$ - информация по $X_1$. Тогда
+		\begin{gather*}
+			I(\theta) = nI_1(\theta)\\
+			\implies R_\delta(\theta)\geq\cfrac{1}{nI_1(\theta)}
+		\end{gather*}
+	\end{enumerate}
+\end{addition}
 
 \paragraph{42. Какая оценка называется эффективной по Фишеру}
+\begin{definition}[R-эффективная оценка]
+	Оценка $\delta$ называется R-эффективной (эффективной по Фишеру), если
+	\begin{enumerate}
+		\item $\delta$ - несмещённая оценка
+		\item $R_\delta = \cfrac{1}{I(\theta)}$ (равенство в неравенстве Рао-Крамера).
+	\end{enumerate}
+\end{definition}
 
 \paragraph{43. Центральная предельная теорема Леви}
 
