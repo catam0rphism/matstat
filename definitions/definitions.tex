@@ -426,7 +426,20 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{definition}
 
 
-\paragraph{47. Метод построения асимптотических доверительных интервалов на базе асимптотически нормальной оценки}
+\paragraph{47. Метод построения асимптотических доверительных интервалов на базе асимптотически нормальной оценки} ~\\
+Пусть $\delta(\vec X)$ - асимптотически нормальная оценка $\theta$, то есть $\sqrt{n}(\delta(\vec x)-\theta)\Rightarrow N(0, \sigma^2(\theta))$\\
+Тогда:
+\begin{gather*}
+	\sqrt{n}\cfrac{\delta(\vec X) - \theta}{\sigma(\theta)} \Rightarrow N(0,1)\\
+	G(\vec X, \theta) = \sqrt{n}\cfrac{\delta(\vec X)-\theta}{\sigma(\theta)}\\
+\end{gather*}
+Тогда если решение $G(\vec X,\theta) \in I_\alpha$ - интервал, то это доверительный интервал уровня доверия $1-\alpha$\\
+Иначе пусть $\hat\sigma$ - состоятельная оценка $\sigma(\theta)$ (например $\hat\sigma=\sigma(\hat\theta)$, где $\hat\theta$ - состоятельная оценка $\theta$). Тогда:
+\begin{gather*}
+	\sqrt{n}\cfrac{(\delta(\vec X) - \theta)}{\hat\sigma(\vec X)} \Rightarrow N(0,1)\\
+	\sqrt{n}\cfrac{(\delta(\vec X) - \theta)}{\hat\sigma(\vec X)} \in [-t_\alpha, t_\alpha]\\
+	\iff \theta \in \bigg[\delta(\vec X) - \cfrac{t_\alpha\hat\sigma(\vec X)}{\sqrt{n}},\delta(\vec X) + \cfrac{t_\alpha\hat\sigma(\vec X)}{\sqrt{n}}\bigg]\text{ - АДИ уровня доверия } 1-\alpha
+\end{gather*}
 
 \paragraph{48. Постановка задачи ПСГ, верное решение и ошибки (таблица)}
 
