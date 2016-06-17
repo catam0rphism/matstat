@@ -1,0 +1,184 @@
+\documentclass[titlepage]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[english, russian]{babel} % Localisation
+% \usepackage{pscyr} % fonts
+
+% \usepackage{fontspec} % loaded by polyglossia, but included here for transparency 
+% \usepackage{polyglossia}
+% \setmainlanguage{russian} 
+% \setotherlanguage{english}
+
+\usepackage{amssymb} % More math symbols
+\usepackage{amsmath} % Math constructions
+\usepackage{amsthm} % Theorems
+\usepackage{subfiles} % File separation
+\usepackage{titlepic} % Logo =)
+\usepackage{graphicx}
+\usepackage{bbm}
+\usepackage{mathtools} % multiline equations with curly brace
+\usepackage{mathrsfs}
+
+\newcommand{\sP}{\mathcal{P}}
+\newcommand{\sF}{\mathfrak{F}}
+\newcommand{\sX}{\mathfrak{X}}
+\newcommand{\sE}{\mathrm{E}}
+\newcommand{\sN}{\mathrm{N}} % N as N(a,s^2)
+\newcommand{\R}{\mathbb{R}} % R as in Real
+\newcommand*{\bigchi}{\mbox{\Large$\chi$}} % Chi for chi-square
+\DeclareMathOperator{\ex}{ex} % Example
+\DeclareMathOperator{\proj}{Pr} % Projection
+
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Лемма}
+\newtheorem{definition}{Определение}
+\newtheorem*{example}{Пример}
+\newtheorem*{statement}{Утверждение}
+\newtheorem*{suggestion}{Предложение}
+
+\begin{document}
+\paragraph{1. Что такое регрессия величины Y по величине X и что представляет собой модель линейной регрессии} % (fold) 
+\begin{definition}[Регрессия] ~\\
+	Пусть $Y$ - наблюдение,  $Z$ - характеристика, определяющая распределение $Y$, $F_Z$ - распределение $Y$ при фиксированном $Z$.\\
+	Пусть $Y_1,\dots,Y_n$ - независимы.
+	Установим зависимость $Y_i$ от $i$.
+	Сопоставим $\forall i: i \mapsto Z_i \implies F_i \equiv F_{Z_i}$.
+	Обычно эту зависимость задают параметрически ($\ex: F_i = g_\theta(F_{Z_0}), \theta \in \R^d$).\\
+	Тогда $E_\theta(Y|Z) = g_\theta(Z)$ - \textbf{регрессия} $Y$ по $Z$.\\
+	\textbf{Модель линейной регрессии}
+	\[\sE_\theta(Y|Z) = X^T\beta,\ \beta =
+		\begin{pmatrix}
+			\beta_1\\
+			\vdots\\
+			\beta_n
+		\end{pmatrix}
+	\]
+	В условиях этой модели
+	\begin{align*}
+		\sE_\theta Y_i &= (X(Z_i))^T\beta\\
+		Y_i &= (X(Z_i))^T\beta + \varepsilon_i\\
+		Y &= X^T\beta + \varepsilon (\sE\varepsilon = 0)\\
+	\end{align*}
+	Где $X \in M_{m\times n}$ - матрица регрессоров, $\beta$ - $m \times 1$ - столбец параметров, $\varepsilon = (\varepsilon_1,\dots,\varepsilon_n)^T\text{ - вектор отклонений.}$
+\end{definition}
+
+\paragraph{2. Что представляет собой оценка по методу наименьших квадратов}
+\begin{definition}[Метод наименьших квадратов]~\\
+	Пусть $Y = X^T\beta + \varepsilon$.\\
+	Рассмотрим $S(\beta) = ||Y-X^T\beta||^2=(Y-X^T\beta)^T(Y-X^T\beta) = \sum_{i=1}^n(Y_i-\sum_{j=1}^mx_{ji}\beta_j)^2$.\\
+	Тогда $\hat \beta$ называется МНК-оценкой $\beta$, если $\forall \beta: S(\hat \beta)<=S(\beta)$.\\
+\end{definition}
+
+\paragraph{3. Геометрический смысл метода наименьших квадратов}
+\[	Y = \sum_{i=1}^m X_i\beta_i + \varepsilon\text{, где }X_j = \begin{pmatrix}
+	x_{j1}\\
+	\vdots\\
+	x_{jn}
+\end{pmatrix}\text{ - транспонированные строки X.}\]
+Пусть $Y \in V_n$ - линейное пространство наблюдений, $V_r = \alpha(X_1,\dots,X_m)$  - линейное подпространство на $(X_1,\dots,X_m)$, а $r = rk(x)$ - размерность пространства.\\
+\begin{align*}
+	\text{Тогда } &||Y-X^T\beta|| \text{- расстояние от $Y$ до точки  в $V_r$}\\
+	&||Y-X^T\beta||\rightarrow \min\text{, если } \eta = X^T\beta=\proj_{V_r}Y\\
+	\text{При этом } & X_k \perp (Y-X^T\beta), \forall k \in \{1\ldots m\}\\
+	\iff & X_k^T(Y-X^T\beta) = 0, \forall k \in \{1\ldots m\}\\
+	\iff & X(Y-X^T\beta) = 0\\
+	\iff & XX^T\beta = XY\\
+	\implies &\text{ существует единственное решение.}
+\end{align*}
+
+\paragraph{4. Какие функции параметра модели линейной регрессии допускают несмещенное оценивание}
+\begin{definition}[Функция параметра] ~\\
+	Мы будем называть $\psi$ функцией параметра $\beta$, если
+	\[\psi = C^T\beta,\,(\psi = (\psi_1,\dots,\psi_q)^T)\]
+\end{definition}
+\begin{definition}[Линейная оценка] ~\\
+	Мы будем называть $\hat \psi$ линейной оценкой, если
+	\[\hat\psi = AY\ (A \in M_{q \times n})\]
+\end{definition}
+\begin{definition}[ДНО функция параметра] ~\\
+	Мы будем называть функцию параметра $\psi = C^T\beta$ допускающей несмещённое оценивание (ДНО), если
+	\[\exists \hat \psi = AY: \sE_\theta \hat \psi = \psi,\,\forall \theta \in \Theta = \R^m \times \R\]
+\end{definition}
+
+\paragraph{5. Теорема Гаусса-Маркова}
+\begin{theorem}[Гаусса-Маркова] ~\\
+	Пусть $\psi$ - ДНО функция параметра, $\psi = C^T\beta, q = 1$. Тогда существует $\hat\psi$ - линейная несмещённая оценка, такая что $\hat\psi$ - НРМД оценка.\\
+	При этом для любых $\hat\beta$ решений системы нормальных уравнений $\hat\psi=C^T\hat\beta$
+\end{theorem}
+
+\paragraph{6. Что такое нормальные уравнения} ~\\
+МНК-оценка $\hat \beta$ находится как решение системы нормальных уравнений
+\[\begin{dcases}
+		\frac{\partial S}{\partial \beta_k}\bigg(-2\sum_{i=1}^nx_{ki}(Y_i-\sum_{j=1}^mx_{ji}\beta_j)^2\bigg) = 0\\
+		k \in (1,\dots,m)
+\end{dcases}\]
+\[\begin{dcases}
+		\sum_{i=1}^nx_{ki}Y_i=\sum_{i=1}^nx_{ki}\sum_{j=1}^mx_{ji}\beta_j = 0\\
+		k \in (1,\dots,m)
+\end{dcases}\]
+Или в матричной форме\\
+$XX^T\beta=XY$ - система\\
+$\hat\beta$ - решение системы, МНК-оценка\\
+$|XX^T| \neq 0 \implies \hat\beta = (XX^T)^{-1}XY$, т.е. $\exists!$ решение.\\
+
+\paragraph{7. Определение порядковых статистик и рангов}
+\begin{definition}[Порядковые статистики, вариационный ряд и ранги] ~\\
+	Достаточная статистика
+	$$X_{(1)}\leq X_{(2)}\leq \dots X_{(n)}$$ называется вариационным рядом, $X_(k)$ - $k$-ая порядковая статистика. Ранг $R_k$ - номер $x_k$ в вариационном ряду
+\end{definition}
+
+\paragraph{8. Что такое выборочная функция распределения}
+\begin{definition}[Выборочная функция распределения] ~\\
+	Выборочной функцией распределения называют $$F_n(x)=\frac{1}{n}\sum_{i=1}^n\mathbbm{1}_{\{X_i < x\}}=\frac{\text{Число наблюдений меньших }x}{\text{общее число наблюдений}}$$
+\end{definition}
+
+\paragraph{9. Что представляет собой случайная величина, функция распределения которой – выборочная функция распределения}
+
+\paragraph{10. Теорема Гливенко-Кантелли}
+\begin{theorem}[Гливенко-Кантелли]
+	$$\sup_x \{|F_n(x)-F(x)|\} \xrightarrow[n\rightarrow \infty]{P_\theta=1} 0,\forall F$$
+\end{theorem}
+Утверждает сильную состоятельность $F_n$
+
+\paragraph{11. Теорема Колмогорова}
+\begin{theorem}[Колмогорова]
+	$$\sqrt{n} \sup_x \{F_n(x)-F(x)\} \underset{F}{\Rightarrow}\mathcal{K}$$
+\end{theorem}
+Где $\mathcal{K}$ -  распределение Колмогорова, функция распределения ${\mathcal{K}(x) = \sum_{j=-\infty}^{\infty} (-1)^j e^{-2j^2x^2}}$
+
+\paragraph{12. Построение доверительной области для теоретической функции распределения с помощью теоремы Колмогорова} ~\\
+Теорема Колмогорова даёт возможность строить доверительные области для функции распределения. Пусть $\alpha$ - малое число, $x_\alpha$ - квантиль уровня $1-\alpha$, тогда
+$$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x_\alpha}{\sqrt{n}} \leq F(x) \leq F_n(x)+\frac{x_\alpha}{\sqrt{n}})}$$
+
+\paragraph{13. Что называется выборочной характеристикой случайной величины. Примеры (выборочные моменты, выборочные квантили)}
+\begin{definition}[Выборочные характеристики] ~\\
+	Пусть $\mathscr{F}$ - подмножество множество распределений $\alpha:\mathscr{F}\rightarrow\R$ - числовая характеристика. Тогда 
+	\begin{align*}
+		&\alpha(F) \text{ - теоретическая характеристика}\\
+		&\alpha(F_n) \text{ - выборочная характеристика}\\
+	\end{align*}
+\end{definition}
+\begin{example}[Выборочные моменты]~\\
+	\begin{itemize}
+		\item $\bar X = \cfrac{1}{n}\sum_{i=1}^nX_i$ - выборочное среднее.
+		\item $s^2 = \cfrac{1}{n}\sum_{i=1}^n(X_i-\bar X)^2$ - выборочная дисперсия.
+		\item $\alpha_k = \cfrac{1}{n}\sum_{i=1}^nX_i^k$ - выборочные начальные моменты.
+		\item $\beta_k = \cfrac{1}{n}\sum_{i=1}^n(X_i-\bar X)^k$ - выборочные центральные моменты.
+	\end{itemize}
+\end{example}
+\begin{example}[Выборочные квантили] ~\\
+	$\hat{\xi_p}$ - квантиль порядка $p$, $\hat{\xi_{p}}=X_{([np]+1)}$, если $np\notin\mathbb{Z}$, иначе $\hat{\xi_{p}}\in [X_{(np)};X_{(np+1)})$
+\end{example}
+
+\paragraph{14. Виды сходимости случайных величин и распределений} ~\\
+
+\paragraph{15. Метод построения доверительных эллипсоидов для параметров линейной регрессии} ~\\
+\begin{definition}[Доверительный эллипсоид] ~\\
+Пусть $\hat\Theta = \{\psi \mid (\hat\psi - \psi)^TB^{-1}(\hat\psi - \psi) \leq qs^2x_\alpha\}$\\
+Где $x_\alpha = F^{-1}_{q,n-r}(1-\alpha)$, то есть $F_{1,n-r}(x_\alpha)=1-\alpha$\\
+Тогда $P_\theta(\psi \in \hat\Theta) = 1-\alpha, \forall \theta \in \Theta$\\
+Таким образом $\hat\Theta$ - доверительный эллипсоид уровня доверия $1-\alpha$
+\end{definition}
+
+\paragraph{16. Постановка задачи однофакторного дисперсионного анализа, F-критерий проверки однородности наблюдений в предположении нормальности.}
+\end{document}
