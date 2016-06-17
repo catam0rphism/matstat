@@ -1,8 +1,52 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\paragraph{Информация по Фишеру}
+\paragraph{Информация по Фишеру}~\\
+
 Пусть $(\sX,\sF,\sP)$ - статистический эксперимент, $\sP=\{P_\theta, \theta\in\Theta\}$. Предположим, что $\sP$ доминируется мерой $\mu$ (тогда существует семейство плотностей $f((.);\theta)=\frac{dP_\theta}{d\mu}, \theta\in\Theta$)\\
 Пусть $\Theta\subseteq\R$
+
+\begin{definition}[Регулярный эксперимент] ~\\
+	Пусть $(\sX,\sF,\sP), \sP = \{P_\theta, \theta \in \Theta\}$ - статистический эксперимент, $\Theta \subseteq \R$.\\
+	Эксперимент называется регулярным, если выполняются следующие требования:
+	\begin{enumerate}
+		\item $\rho << \mu, p_\theta = \cfrac{\mathrm{d}\rho_\theta}{\mathrm{d}\mu}, \theta \in \Theta$\\
+			  $p_\theta(\vec X)$ - непрерывно дифференцируема по $\theta$ (для почти всех $x$), т.е.
+			  $\exists\, {p'}_\theta, (x) = \cfrac{\partial p_\theta(x)}{\partial\theta}$ - непрерывная функция
+		\item $\cfrac{\partial}{\partial\theta}\int\limits_\sX p_\theta(x)\mathrm{d}\mu(x) = \int\limits_\sX \cfrac{\partial p_\theta(x)}{\partial\theta}\mathrm{d}\mu(x)$
+		\item $\exists I(\theta): 0 < I(\theta) < \infty$, определяемое соотношением:
+		\[I(\theta) = \int\limits_\sX \cfrac{p'(\vec X)^2}{p(\vec X)}\mathrm{d}\mu(\vec X)\]
+	\end{enumerate}
+	Или же в терминах функций правдоподобия:
+	\begin{gather*}
+		LL(\vec X, \theta) = \log L(\vec X, \theta)\\
+		\cfrac{\partial LL(\vec X, \theta)}{\partial\theta} = \cfrac{\cfrac{\partial L(\vec X, \theta)}{\partial \theta}}{L(\vec X, \theta)} = \cfrac{{p'}_\theta(\vec X)}{p_\theta(\vec X)}
+	\end{gather*}
+	\begin{enumerate}
+		\item $L(\vec X, \theta)$ - непрерывна и дифференцируема по $\theta$
+		\item $\sE_\theta\cfrac{\partial LL(\vec X, \theta)}{\partial\theta} = 0,\ \forall \theta$
+		\item С теми же условиями на $I(\theta)$:
+		\[I(\theta) = \sE_\theta\bigg(\cfrac{\partial LL(\vec X, \theta)}{\partial \theta}\bigg)^2 = \sD_\theta\bigg(\cfrac{\partial LL(\vec X, \theta)}{\partial \theta}\bigg)\]
+	\end{enumerate}
+	При этом $I(\theta)$ - информация Фишера.
+\end{definition}
+
+\begin{theorem}[Неравенство Рао-Крамера] ~\\
+	Пусть $(\sX,\sF,\sP), \sP = \{P_\theta, \theta \in \Theta\}$ - статистический эксперимент, $I(\theta)$ - информация Фишера, $\delta$ - разрешённая оценка, $b$ - диффиренцируемое смещение $\theta$	$(b(\theta) = \sE_\theta\delta(\vec X)-\theta)$, тогда
+	\[R_\delta(\theta)\geq\cfrac{(1+b'(\theta))^2}{I(\theta)}+b(\theta)^2\]
+\end{theorem}
+\begin{suggestion} ~\\
+	\begin{enumerate}
+		\item Если $\delta$ - несмещённая оценка, то
+		\[R_\delta(\theta)\geq\cfrac{1}{I(\theta)}\]
+		\item Пусть $X_1,\dots,X_n$ - выборка из распределения $F$, $I_1(\theta)$ - информация по $X_1$. Тогда
+		\begin{gather*}
+			I(\theta) = nI_1(\theta)\\
+			\implies R_\delta(\theta)\geq\cfrac{1}{nI_1(\theta)}
+		\end{gather*}
+	\end{enumerate}
+\end{suggestion}
+
+Если функция правдоподобия дважды дифференциируема по $\theta$ под знаком интеграла, то $$I(\theta)=-\sE(\frac{\partial^2}{\partial\theta^2}\ln L(\vec{X};\theta))$$
 
 \end{document}
