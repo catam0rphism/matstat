@@ -79,4 +79,30 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	Риском называют $R(\delta,\theta) = \sE_\theta[W(\delta(\vec{X}),\theta)]$
 \end{definition}
 
+\begin{definition}[Смещение оценки]
+	Смещением оценки $\delta(\vec{X})$ параметрической функцией $g(\theta)$ называют величину $$b_\theta(x)=\sE_\theta[\delta(\vec{X})]-g(\theta)$$
+\end{definition}
+
+\begin{definition}[НРМД оценка]
+	Пусть $\delta_0(\vec X)$ - несмещённая оценка $g(\theta)$. Мы будем называть её несмещённой с равномерно минимальной дисперсией, если:
+	\begin{gather*}
+		\forall \delta(\vec X) \text{ - несмещенных оценок } g(\theta):
+		\ \sD\delta_0(\vec X) \leq \sD\delta(\vec X),\ \forall \theta \in \Theta
+	\end{gather*}
+\end{definition}
+
+\begin{theorem}[Единственность НРМД-оценки]
+	Если $\delta_1(\vec{X})$ и $\delta_2(\vec{X})$ НРМД, то $P(\delta_1(\vec{X}) = \delta_2(\vec{X})) = 1$
+\end{theorem}
+
+\paragraph{Минимаксный и байесовский подходы}
+\begin{definition}[Минимаксная оценка]
+	Оценка $\delta_0$ называется минимаксной, если они минимизиреут максимальный риск $$R(\delta_0,\theta)=\inf_\delta \sup_{\theta\in\Theta} R(\delta,\theta)$$
+\end{definition}
+
+Пусть на $\Theta$ задано априорное распределение $Q$
+\begin{definition}[Байесовский риск и байесовская оценка]
+	Величина $$R(\delta)=\int_\Theta R(\delta,\theta)Q(\mathrm{d}\theta) $$ называется байесовским риском оценки $\delta$. Оценка, минимизирующая байесовский риск называется байесовской
+\end{definition}
+
 \end{document}
