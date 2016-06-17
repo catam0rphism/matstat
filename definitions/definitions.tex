@@ -23,6 +23,7 @@
 \newcommand{\sF}{\mathfrak{F}}
 \newcommand{\sX}{\mathfrak{X}}
 \newcommand{\sE}{\mathrm{E}}
+\newcommand{\sD}{\mathrm{D}}
 \newcommand{\sN}{\mathrm{N}} % N as N(a,s^2)
 \newcommand{\R}{\mathbb{R}} % R as in Real
 \newcommand*{\bigchi}{\mbox{\Large$\chi$}} % Chi for chi-square
@@ -171,7 +172,22 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{example}
 
 \paragraph{14. Виды сходимости случайных величин и распределений} ~\\
-
+\begin{definition}[Сходимость по вероятности] ~\\
+	Мы говорим, что последовательность СВ $\{\xi_n\}$ сходится по вероятности к СВ $\xi$ при $n\rightarrow\infty$ ($\xi_n\overset{P}{\rightarrow}\xi$), если
+	\[\forall \varepsilon > 0 : P(|\xi_n-\xi|\geq\varepsilon)\underset{n\rightarrow\infty}{\longrightarrow}0\]
+\end{definition}
+\begin{definition}[Сходимость почти наверное] ~\\
+	Мы говорим, что последовательность СВ $\{\xi_n\}$ сходится почти наверное к СВ $\xi$ при $n\rightarrow\infty$ ($\xi_n\rightarrow\xi$), если
+	\[P\{\omega:\xi_n(\omega)\underset{n\rightarrow\infty}{\longrightarrow}\xi(\omega)\}=1\]
+\end{definition}
+\begin{definition}[Сходимость по распределению] ~\\
+	Мы говорим, что последовательность СВ $\{\xi_n\}$ сходится по распределению (слабо) к СВ $\xi$ ($\xi_n\Rightarrow\xi$), если
+	\[\underset{x}{\sup}|F_n(x) - F(x)|\underset{n\rightarrow\infty}{\longrightarrow}0\]
+\end{definition}
+\begin{definition}[Сходимость в степени p]
+	Мы говорим, что последовательность СВ $\{\xi_n\}$ сходится в степени $p$ к СВ $\xi$ ($\xi_n\overset{p}{\rightarrow}\xi$), если
+	\[\forall p > 0: \sE|\xi_n-\xi|^p\overset{n\rightarrow\infty}{\longrightarrow}0\]
+\end{definition}
 \paragraph{15. Метод построения доверительных эллипсоидов для параметров линейной регрессии} ~\\
 \begin{definition}[Доверительный эллипсоид] ~\\
 Пусть $\hat\Theta = \{\psi \mid (\hat\psi - \psi)^TB^{-1}(\hat\psi - \psi) \leq qs^2x_\alpha\}$\\
@@ -219,6 +235,14 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{definition}
 
 \paragraph{21. Какая оценка называется несмещенной, что такое смещение}
+\begin{definition}[Несмещенная оценка] ~\\
+	Мы будем называть оценку $\delta(\vec X)$ функции параметра $g(\theta)$ несмещённой, если:
+	\[\forall \theta \in \Theta: \sE_\theta\delta(\vec X) = g(\theta)\]
+\end{definition}
+\begin{definition}[Смещение оценки] ~\\
+	Мы будем называть смещением оценки величину
+	\[b_g(\theta) = \sE_\theta\delta(\vec X) - g(\theta)\]
+\end{definition}
 
 \paragraph{22. Какая оценка называется асимптотически нормальной}
 \begin{definition}[Асимптотически нормальная оценка] ~\\
@@ -227,9 +251,23 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{definition}
 
 \paragraph{23. Определение несмещенной оценки с равномерно минимальной дисперсией}
+\begin{definition}[НРМД оценка] ~\\
+	Пусть $\delta_0(\vec X)$ - несмещённая оценка $g(\theta)$. Мы будем называть её несмещённой с равномерно минимальной дисперсией, если:
+	\begin{gather*}		
+		\forall \delta(\vec X) \text{ - несмещенных оценок } g(\theta):\\
+		\sD\delta_0(\vec X) \leq \sD\delta(\vec X),\ \forall \theta \in \Theta
+	\end{gather*}
+\end{definition}
 
 \paragraph{24. Как используются теорема Рао-Блэкуэлла-Колмогорова и теорема Лемана-Шеффе при построении НРМД-оценки}
-
+\begin{statement}
+	По теореме Рао-Блэкуэлла-Колмогорова, если $T$ - достаточная статистика семейства $\sP$, а $\delta$ - оценка параметра $\theta$ и $\eta=\sE(\delta|T)$:
+	\[R(\delta,\theta)\geqR(\eta,\theta)\]
+	Для несмещённой оценки $\delta$ параметра $\theta$
+	\[R(\delta,\theta) = \sD(\delta, \theta)\]
+	По теореме Лемана-Шеффе существует не более одной несмещённой оценки параметра $\theta$, являющейся функцией от полной достаточной статистики, то есть если $T$ - полная достаточная статистика, то
+	\[\delta_0 = \sE(\delta|T) \text{ - НРМД оценка}\]
+\end{statement}
 \paragraph{25. Неравенство Гельдера}
 
 \paragraph{26. Что представляет собой простая регрессионная модель}
@@ -310,7 +348,7 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 
 \paragraph{50. Выражение вероятностей ошибок в терминах критерия}
 
-\paragraph{51. Лемма Неймана-Пирсона}
+\par**agraph{51. Лемма Неймана-Пирсона}
 
 \paragraph{52. Проверка гипотез о параметрах линейной регрессионной модели (F-критерий)}
 
