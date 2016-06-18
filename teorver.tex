@@ -1,0 +1,21 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\paragraph{Закон больших чисел}
+Пусть $\{\xi_n\}_{n\in\mathbb{N}}$
+\begin{theorem}[ЗБЧ Маркова]
+	Пусть $\sE\xi_n=a_n,\sD\xi_n=\sigma_n^2$, кроме того, выполнено условие Маркова ${\lim_{n\rightarrow\infty}\sD(\frac{1}{n^2}(\sum_{i=1}^n)) = 0}$, тогда выполняется ЗБЧ
+	$$\lim_{n\rightarrow\infty}P(|\frac{1}{n}\sum_{i=1}^n \xi_i - \frac{1}{n}\sum_{i=1}^n a_i|\geq\epsilon) = 0, \forall \epsilon$$
+\end{theorem}
+
+\begin{theorem}[ЗБЧ Чебышева]
+	Пусть $\{\xi_n\}_{n\in\mathbb{N}}$ попарно не корелированы ($\text{cov}(\xi_i,\xi_j)=0,\forall i \neq j$)
+	$\sD\xi_n \leq C$, тогда выполняется ЗБЧ
+	$$\lim_{n\rightarrow\infty}P(|\frac{1}{n}\sum_{i=1}^n \xi_i - \frac{1}{n}\sum_{i=1}^n a_i|\geq\epsilon) = 0, \forall \epsilon$$
+\end{theorem}
+
+\begin{theorem}[ЗБЧ Хинтча]
+	Пусть $\{\xi_n\}_{n\in\mathbb{N}}$ попарно независимые, одинаково распределённые, $|\sE\xi_i|<\infty$, тогда выполняется ЗБЧ
+\end{theorem}
+
+\end{document}
