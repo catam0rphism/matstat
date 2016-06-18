@@ -190,6 +190,7 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	Мы говорим, что последовательность СВ $\{\xi_n\}$ сходится в степени $p$ к СВ $\xi$ ($\xi_n\overset{p}{\rightarrow}\xi$), если
 	\[\forall p > 0: \sE|\xi_n-\xi|^p\overset{n\rightarrow\infty}{\longrightarrow}0\]
 \end{definition}
+
 \paragraph{15. Метод построения доверительных эллипсоидов для параметров линейной регрессии} ~\\
 \begin{definition}[Доверительный эллипсоид] ~\\
 Пусть $\hat\Theta = \{\psi \mid (\hat\psi - \psi)^TB^{-1}(\hat\psi - \psi) \leq qs^2x_\alpha\}$\\
@@ -278,6 +279,7 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	По теореме Лемана-Шеффе существует не более одной несмещённой оценки параметра $\theta$, являющейся функцией от полной достаточной статистики, то есть если $T$ - полная достаточная статистика, то
 	\[\delta_0 = \sE(\delta|T) \text{ - НРМД оценка}\]
 \end{statement}
+
 \paragraph{25. Неравенство Гельдера}
 
 \paragraph{26. Что представляет собой простая регрессионная модель}
@@ -354,7 +356,9 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	$$P_\theta (T\in A) = P_T(A)$$
 \end{definition}
 
-\paragraph{36. В чем состоит свойство асимптотической нормальности оценки максимального правдоподобия}
+\paragraph{36. В чем состоит свойство асимптотической нормальности оценки максимального правдоподобия} ~\\
+\[\sqrt{n}(\hat\theta-\theta)\Rightarrow\sN(0,I^{-1}(\theta))\]
+то есть $\hat\theta$ асимптотически эффективна.
 
 \paragraph{37. Что такое функция правдоподобия}
 \begin{definition}[Функция правдоподобия] ~\\
@@ -399,6 +403,7 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	\end{enumerate}
 	При этом $I(\theta)$ - информация Фишера.
 \end{definition}
+
 \paragraph{41. Неравенство Рао-Крамера}
 \begin{theorem}[Неравенство Рао-Крамера] ~\\
 	Пусть $(\sX,\sF,\sP), \sP = \{P_\theta, \theta \in \Theta\}$ - статистический эксперимент, $I(\theta)$ - информация Фишера, $\delta$ - разрешённая оценка, $b$ - диффиренцируемое смещение $\theta$	$(b(\theta) = \sE_\theta\delta(\vec X)-\theta)$, тогда
@@ -426,6 +431,10 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{definition}
 
 \paragraph{43. Центральная предельная теорема Леви}
+\begin{theorem}[ЦПТ Леви]
+	Пусть $\{\xi_n\}_{n\in\mathbb{N}}$ НОРСВ, $\sE\xi_n=a<\infty$, $\sD\xi_n=\sigma^2\leq\infty$, тогда 
+	$$\frac{\sum_{i=1}^n\xi_i - na}{\sigma\sqrt{n}}\Rightarrow \sN(0,1)$$
+\end{theorem}
 
 \paragraph{44. Что называется доверительным интервалом уровня $\alpha$}
 \begin{definition}[Доверительный интервал уровня $\alpha$] ~\\
@@ -434,6 +443,22 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{definition}
 
 \paragraph{45. Законы больших чисел}
+Пусть $\{\xi_n\}_{n\in\mathbb{N}}$
+\begin{theorem}[ЗБЧ Маркова]
+	Пусть $\sE\xi_n=a_n,\sD\xi_n=\sigma_n^2$, кроме того, выполнено условие Маркова ${\lim_{n\rightarrow\infty}\sD(\frac{1}{n^2}(\sum_{i=1}^n)) = 0}$, тогда выполняется ЗБЧ
+	$$\lim_{n\rightarrow\infty}P(|\frac{1}{n}\sum_{i=1}^n \xi_i - \frac{1}{n}\sum_{i=1}^n a_i|\geq\epsilon) = 0, \forall \epsilon$$
+\end{theorem}
+
+\begin{theorem}[ЗБЧ Чебышева]
+	Пусть $\{\xi_n\}_{n\in\mathbb{N}}$ попарно не корелированы ($\text{cov}(\xi_i,\xi_j)=0,\forall i \neq j$)
+	$\sD\xi_n \leq C$, тогда выполняется ЗБЧ
+	$$\lim_{n\rightarrow\infty}P(|\frac{1}{n}\sum_{i=1}^n \xi_i - \frac{1}{n}\sum_{i=1}^n a_i|\geq\epsilon) = 0, \forall \epsilon$$
+\end{theorem}
+
+\begin{theorem}[ЗБЧ Хинтча]
+	Пусть $\{\xi_n\}_{n\in\mathbb{N}}$ попарно независимые, одинаково распределённые, $|\sE\xi_i|<\infty$, тогда выполняется ЗБЧ
+	$$\lim_{n\rightarrow\infty}P(|\frac{1}{n}\sum_{i=1}^n \xi_i - \frac{1}{n}\sum_{i=1}^n a_i|\geq\epsilon) = 0, \forall \epsilon$$
+\end{theorem}
 
 \paragraph{46. Понятие асимптотического доверительного интервала} ~\\
 Дано: $(\sX_n,\sF_n,\sP_n), \sP_n=\{P_{n,\theta},\theta\in\Theta\}$
@@ -441,7 +466,6 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	Интервал образованный парой статистик $T_{1n}(\vec X)$, $T_{2n}(\vec X)$ называется асимтотическим доверительным с уровнем доверия $1 - \alpha$, если
 	\[\underset{n\rightarrow\infty}{\underline{\lim}}P_{n,\theta}(\theta \in [T_{1n},T_{2n}])\geq1-\alpha\]
 \end{definition}
-
 
 \paragraph{47. Метод построения асимптотических доверительных интервалов на базе асимптотически нормальной оценки} ~\\
 Пусть $\delta(\vec X)$ - асимптотически нормальная оценка $\theta$, то есть $\sqrt{n}(\delta(\vec x)-\theta)\Rightarrow N(0, \sigma^2(\theta))$\\
