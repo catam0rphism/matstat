@@ -540,7 +540,18 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 
 \paragraph{55. Критерий проверки однородности двух независимых выборок из нормального закона с равными (неизвестными) дисперсиями}
 
-\paragraph{56. Что такое статистика критерия и как она используется при построении нерандомизованного (асимптотического) критерия}
+\paragraph{56. Что такое статистика критерия и как она используется при построении нерандомизованного (асимптотического) критерия} ~\\
+Статистика асимптотического критерия $G(\vec x)$ удовлетворяет условиям:
+\begin{enumerate}
+	\item $G_n(\vec x)$ при $n \rightarrow \infty$ не зависит от $\theta$ при $\theta \in \Theta_0$
+	\item $G_n(\vec x)$ при $n \rightarrow \infty$ известно
+	\item $G_n(\vec x)$ при $n \rightarrow \infty$ при $\theta \in \Theta_A$ отличается от распределения при $\theta \in \Theta_0$
+\end{enumerate}
+Нерандомизированный асимптотический критерий на базе статистики $G(\theta)$ имеет следующий вид
+\[\varphi(\vec x) = \begin{cases}
+	0, &G_n(\vec x) \in I_\alpha \\
+	1, &G_n(\vec x) \notin I_\alpha
+\end{cases}\ I_\alpha: P_\theta(G_n(\vec x) \in I_\alpha) \geq 1 - \alpha,\ \forall\theta\in\Theta_0\]
 
 \paragraph{57. Критерий согласия Колмогорова} ~\\
 Пусть $X_1,\dots,X_n$ - выборка из $F$. Тогда
