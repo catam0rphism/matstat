@@ -530,15 +530,49 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 
 \paragraph{56. Что такое статистика критерия и как она используется при построении нерандомизованного (асимптотического) критерия}
 
-\paragraph{57. Критерий согласия Колмогорова}
+\paragraph{57. Критерий согласия Колмогорова} ~\\
+Пусть $X_1,\dots,X_n$ - выборка из $F$. Тогда
+\[H_0:F=F_0,\ F_0\text{ непрерывна - простая гипотеза согласия}\]
+\textbf{Статистика критерия}
+\[D_n = \sqrt{n}\sup_x|F_n(x)-F_0(x)|\]
+\textbf{Асимптотический критерий}
+\[\varphi(\vec x) = \begin{cases}
+	0, &D_n \leq x_\alpha\\
+	1, &D_n > x_\alpha
+\end{cases}\]
+Где $x_\alpha: K(x_\alpha) = 1 - \alpha$
 
 \paragraph{58. Постановка задачи двухфакторного дисперсионного анализа, главные эффекты и взаимодействия}
 
-\paragraph{59. Какое распределение называется мультиномиальным и его связь с хи-квадрат критерием}
+\paragraph{59. Какое распределение называется мультиномиальным и его связь с хи-квадрат критерием} ~\\
+Пусть $X_1,\dots,X_n$ - выборка из распределения, сконцентрированного в точках $\{1,\dots,s\}$ с атомами $p_1,\dots,p_s$.\\
+Тогда распределение величин $(v_1,\dots,v_s), v_k=\sum_{i=1}^n\mathbbm{1}_{\{X_i=k\}}$ является мультиномиальным.\\
+Плотность:
+\[q_{\vec x}(\vec k) = P(x_1 = k_1,\dots,x_n=k_n)=\cfrac{n!}{k_1!\dots k_n!}p_1^{k_1}\dots p_n^{k_n}\mathbbm{1}_{\{\sum_{i=1}^nk_i=n\}}\]
+В критерии хи-квадрат количества элементов в интервалах $n_1,\dots,n_N$ распределены мультиномиально.
 
 \paragraph{60. Критерий хи-квадрат для проверки простой гипотезы согласия}
+Статистика:
+\[\bigchi^2 = \sum_{i=1}^r\cfrac{(\nu_i-np_{i0})^2}{np_{i0}}\]
+Где $r$ - число интервалов.\\
+Критерий:
+\[\varphi(\vec x) = \begin{cases}
+	0, &\bigchi^2 \leq x_\alpha\\
+	1, &\bigchi^2 > x_\alpha
+\end{cases}\ x_\alpha: \mathscr{K}_{r-1}(x_\alpha) = 1 - \alpha\]
+Где $\mathscr{K}_{r-1}$ - ф.р. $\bigchi_{r-1}^2$
 
-\paragraph{61. Критерий хи-квадрат для проверки сложной параметрической гипотезы согласия}
+\paragraph{61. Критерий хи-квадрат для проверки сложной параметрической гипотезы согласия} ~\\
+$H_0: p_i = p_i(\theta), \text{ при некоторых } \theta \in Theta \subset \R^d$\\
+Аналог статистики:
+\[\bigchi^2(\theta) = \sum_{i=1}^n\cfrac{(\nu_i-np_i(\theta))^2}{np_i(\theta)} \text{ - зависит от параметра}\]
+Статистика:
+\[\widetilde{\bigchi}^2 = \min_{\theta \in \Theta} \bigchi^2(\theta) \overset{H_0}{\Rightarrow}\bigchi_{r-1-d}^2\]
+\[\varphi(\vec x) = \begin{cases}
+	0, &\widetilde{\bigchi}^2 \leq x_\alpha\\
+	1, &\widetilde{\bigchi}^2 > x_\alpha
+\end{cases}\ x_\alpha: \mathscr{K}_{r-1-d}(x_\alpha) = 1 - \alpha\]
+Где $\mathscr{K}_{r-1-d}$ - ф.р. $\bigchi_{r-1-d}^2$
 
 \paragraph{62. Какой критерий называется наиболее мощным} ~\\
 Тот для которого мощность критерия $\beta:\Theta_1\rightarrow[0,1],\ \beta(\theta) = \sE_\theta\varphi(\vec X) = 1 - P_\theta(\text{Ошибки II рода})$ максимальна при данном уровне значимости $\alpha$
