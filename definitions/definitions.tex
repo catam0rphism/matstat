@@ -567,13 +567,47 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 	\item Область сомнения - $\{\vec x \in \sX: \varphi(\vec x) \in (0,1)\}$
 \end{enumerate}
 
-\paragraph{68. Что такое распределение Стьюдента}
+\paragraph{68. Что такое распределение Стьюдента} ~\\
+Плотность:
+\[T(b,p)=\cfrac{\sqrt{2}\Gamma((p+1)/2)}{\Gamma(p/p)\sqrt{\pi p b}}\bigg(1+\cfrac{2x^2}{pb}\bigg)^{-(p+1)/2}\]
 
-\paragraph{69. Характеристические функции: определение и основные свойства}
+\paragraph{69. Характеристические функции: определение и основные свойства} ~\\
+\begin{definition}[Характеристическая функция]
+	\[\varphi_X(t)=\sE e^{itX} = \int\limits_{-\infty}^\infty e^{itx}P_X(dx)\]
+	Называется характеристической функцией.\\
+	При этом для дискретной с.в.
+	\[\varphi_X(t)=\sum_{k=1}^\infty e^{itx_k}p_k\]
+	А для непрерывной
+	\[\varphi_X(t)=\int\limits_{-\infty}{\infty}e^{itx}f_X(x)\mathrm{d}x\]
+\end{definition}
+Свойства:
+\begin{enumerate}
+	\item Пусть $X, Y$ - с.в. и $\varphi_X(t)=\varphi_Y(t),\ \forall t$. Тогда $P_X = P_Y$
+	\item $|\varphi_X(t)|\leq 1,\ \forall t \in \R$
+	\item $\varphi_X(0) = 1$
+	\item $\varphi_X$ - непрерывна.
+	\item $\varphi_aX(t) = \varphi_X(at),\ \forall a \in \R$
+	\item Пусть $X_1,\dots,X_n$ - НСВ, $S_n = \sum_{i=1}^nX_i$. Тогда
+	\[\varphi_{S_n}(t)=\prod_{i=1}^n\varphi_{X_i}(t)\]
+	\item $\forall t \in \R: \varphi_X(-t)=\bar\varphi_X(t)$
+	\item Пусть $F$ - ФР, $\varphi$ - ХФ. Если $F$ непрерывна в $a$, $b$, то
+	\[F(b)-F(a)=\cfrac{1}{2\pi}\lim_{T\rightarrow\inf}\int\limits_{-T}^{+T}\cfrac{e^{-ita}-e^{-itb}}{it}\varphi(t)\mathrm{d}t\]
+\end{enumerate}
 
-\paragraph{70. Что такое гамма распределение, его свойства}
+\paragraph{70. Что такое гамма распределение, его свойства} ~\\
+Плотность:
+\[\Gamma(b,p) = \cfrac{x^{p-1}\exp(-x/b)}{b^p\Gamma(p)}\mathbbm{1}_{[a,\infty)}(x)\]
+Свойства:\\
+Пусть $X \sim \Gamma(b,q_1)$, $Y \sim \Gamma(b,q_2)$. Тогда:
+\[X + Y \sim \Gamma(b,q_1+q_2)\]
+$\bigchi_n^2 = \Gamma(2,n/2)$\\
+$E(a) = \Gamma(1/a,1)$
 
-\paragraph{71. Что представляет собой двухпараметрическое семейство нормальных распределений}
+\paragraph{71. Что представляет собой двухпараметрическое семейство нормальных распределений} ~\\
+Плотность:\\
+% \[\sN(\vec a, R) = (2\pi)^{-n/2}|R|^{-1/2}\exp(-\cfrac{1}{2}(\vec x - \vec a)R^{-1}(\vec x - \vec a)^T)\]
+\[\cfrac{1}{\sqrt{2\pi\sigma^2}}\exp\bigg(-\cfrac{(x-a)^2}{2\sigma^2}\bigg)\]
+
 
 \paragraph{72. Построение доверительных интервалов для параметров линейной регрессионной модели в предположении нормальности} ~\\
 \begin{gather*}
