@@ -524,7 +524,19 @@ $$1-\alpha \approx P_F(\sqrt(n) \sup_x |F_n(x)-F(x)|<\alpha)={P_F(F_n(x)-\frac{x
 \end{cases}\ x_\alpha: \mathscr{K}_1(x_\alpha) = 1 - \alpha\]
 Где $\mathscr{K}_1$ - ф.р. $\bigchi_1^2$
 
-\paragraph{54. Критерий проверки независимости хи-квадрат}
+\paragraph{54. Критерий проверки независимости хи-квадрат} ~\\
+Пусть $(X_1,Y_1),\dots,(X_n,Y_n)$ - выборка из двухмерного распределения с функцией распределения $\mathbb{F}(x,y)$.
+\textbf{Гипотеза независимости}
+\[H_0: \mathbb{F}(x,y)=F_X(x)F_Y(y),\ \forall x,y; F_X(x) = \mathbb{F}(x,\infty), F_Y(y) = \mathbb{F}(\infty,y)\]
+Пусть по $x$ - $r$ интервалов, по $y$ - $s$ интервалов.
+\textbf{Статистика}
+\[\bigchi^2(\theta)=\sum_{i=1}^r\sum_{j=1}^s\cfrac{\Big(\nu_{ij}-\cfrac{\nu_{i\cdot}\nu_{\cdot j}}{n}\Big)^2}{\cfrac{\nu_{i\cdot}\nu_{\cdot j}}{n}}\]
+\textbf{Критерий}
+\[\varphi(\vec {(x,y)}) = \begin{cases}
+	0, \bigchi^2(\theta) \leq x_\alpha\\
+	1, \bigchi^2(\theta) > x_\alpha
+\end{cases}\ x_\alpha: \mathscr{K}_{(r-1)(s-1)}(x_\alpha) = 1 - \alpha\]
+Где $\mathscr{K}_{(r-1)(s-1)}$ - ф.р. $\bigchi_{(r-1)(s-1)}^2$
 
 \paragraph{55. Критерий проверки однородности двух независимых выборок из нормального закона с равными (неизвестными) дисперсиями}
 
